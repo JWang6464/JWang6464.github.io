@@ -33,46 +33,24 @@
       </div>
     </section>
 
-    <!-- --------------------- Environment Section (includes interactive background scene with clickable hotspots for projects, resume, and contact) --------------------- -->
-      <section class="studio" id="studio" aria-label="Studio scene with interactive hotspots">
-        <div class="rain" aria-hidden="true"></div>
-        <div class="rain-lines" aria-hidden="true"></div>
-        <div class="rain-drops" aria-hidden="true"></div>
-        <div class="studio-header">Interactive studio — click a screen, the notebook, or the laptop</div>
+  <!-- --------------------- Office Scene (NYC night rain video + office/character overlay) --------------------- -->
+  <section class="office-scene" id="studio" aria-label="Office scene looking out at rainy NYC night">
+    <!-- Background video -->
+    <video class="bg-video" autoplay loop muted playsinline poster="assets/video/nyc-rain-poster.jpg">
+      <source src="assets/video/nyc-rain.mp4" type="video/mp4" />
+      <!-- Fallback image if video can’t play -->
+      <img src="assets/video/nyc-rain-poster.jpg" alt="" />
+    </video>
 
-      <div class="studio-inner">
-        <div class="hotspots" role="img"
-             aria-label="City view with rain; a monitor, a notebook, and a laptop on a desk.">
+    <!-- Optional warm indoor lighting overlay -->
+    <div class="light-glow" aria-hidden="true"></div>
 
-          <!-- Monitor: Projects -->
-          <button class="hotspot hs-left-monitor"
-                  data-dialog="dlg-projects"
-                  aria-controls="dlg-projects">
-            <span class="dot" aria-hidden="true"></span>
-            Projects <small>left monitor</small>
-          </button>
+    <!-- Foreground (transparent PNG or SVG with desk + boy facing window) -->
+    <img class="foreground" src="assets/img/office-foreground.png" alt="" loading="eager" />
 
-          <!-- Notebook: Resume -->
-          <button class="hotspot hs-notebook"
-                  data-dialog="dlg-resume"
-                  aria-controls="dlg-resume">
-            <span class="dot" aria-hidden="true"></span>
-            Resume <small>notebook</small>
-          </button>
+    <footer>© <span id="year"></span> Jordan Wang · <a href="#home">Back to top</a></footer>
+  </section>
 
-          <!-- Laptop: Contact (hologram) -->
-          <button class="hotspot hs-laptop"
-                  data-dialog="dlg-contact"
-                  aria-controls="dlg-contact">
-            <span class="dot" aria-hidden="true"></span>
-            Contact <small>laptop</small>
-          </button>
-
-        </div>
-      </div>
-
-      <footer>© <span id="year"></span> Jordan Wang · <a href="#home">Back to top</a></footer>
-    </section>
 
     <!-- --------------------- Project Overlays Section (pop-up windows for Projects, Resume, Contact) --------------------- -->
 

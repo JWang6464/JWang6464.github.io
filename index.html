@@ -4,183 +4,163 @@
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>Jordan Wang • Portfolio</title>
+  <link rel="stylesheet" href="assets/css/styles.css" />
 </head>
 
 <body>
-  <h1>Hi! Welcome to my portfolio!</h1>
-  <p>This is my first GitHub portfolio site and a test.</p>
+  <main>
 
-  <!-- --------------------- Intro Section (includes intro text, subheading, and buttons for contact & projects) --------------------- -->
-  <section class="hero" id="home" aria-label="Hero">
-    <div class="hero-inner">
-      <div class="kicker">Computer Science • AI • Statistics</div>
-      <h1 class="title">
-        Hi, I’m <span class="accent">Jordan Wang</span> — I build
-        <span class="accent">useful</span> things that feel like magic.
-      </h1>
-      <p class="sub">
-        Senior at Colby College concentrating in Artificial Intelligence with a Statistics minor.
-        I love turning complex ideas into crisp, practical tools.
-      </p>
-      <div class="cta-row">
-        <a class="btn primary" href="#studio">Explore my work ↓</a>
-        <a class="btn" href="mailto:your-email@colby.edu">Email</a>
-        <a class="btn" href="https://github.com/JWang6464" target="_blank" rel="noreferrer noopener">GitHub</a>
+    <!-- --------------------- Intro Section (includes intro text, subheading, and buttons for contact & projects) --------------------- -->
+    <section class="hero" id="home" aria-label="Hero">
+      <div class="hero-inner">
+        <div class="kicker">Computer Science • AI • Statistics</div>
+        <h1 class="title">
+          Hi, I’m <span class="accent">Jordan Wang</span> — I build
+          <span class="accent">useful</span> things that feel like magic.
+        </h1>
+        <p class="sub">
+          Senior at Colby College concentrating in Artificial Intelligence with a Statistics minor.
+          I love turning complex ideas into crisp, practical tools.
+        </p>
+        <div class="cta-row">
+          <a class="btn primary" href="#studio">Explore my work ↓</a>
+          <a class="btn" href="mailto:jlwang26@colby.edu">Email</a>
+          <a class="btn" href="https://github.com/JWang6464" target="_blank" rel="noreferrer noopener">GitHub</a>
+        </div>
       </div>
-    </div>
-    <div class="scroll-indicator" aria-hidden="true">
-      <div class="mouse"></div><span>Scroll</span>
-    </div>
-  </section>
+      <div class="scroll-indicator" aria-hidden="true">
+        <div class="mouse"></div><span>Scroll</span>
+      </div>
+    </section>
+
+    <!-- --------------------- Environment Section (includes interactive background scene with clickable hotspots for projects, resume, and contact) --------------------- -->
+    <section class="studio" id="studio" aria-label="Studio scene with interactive hotspots">
+      <div class="rain" aria-hidden="true"></div>
+      <div class="studio-header">Interactive studio — click a screen, the notebook, or the laptop</div>
+
+      <div class="studio-inner">
+        <div class="hotspots" role="img"
+             aria-label="City view with rain; a monitor, a notebook, and a laptop on a desk.">
+
+          <!-- Monitor: Projects -->
+          <button class="hotspot hs-left-monitor"
+                  data-dialog="dlg-projects"
+                  aria-controls="dlg-projects">
+            <span class="dot" aria-hidden="true"></span>
+            Projects <small>left monitor</small>
+          </button>
+
+          <!-- Notebook: Resume -->
+          <button class="hotspot hs-notebook"
+                  data-dialog="dlg-resume"
+                  aria-controls="dlg-resume">
+            <span class="dot" aria-hidden="true"></span>
+            Resume <small>notebook</small>
+          </button>
+
+          <!-- Laptop: Contact (hologram) -->
+          <button class="hotspot hs-laptop"
+                  data-dialog="dlg-contact"
+                  aria-controls="dlg-contact">
+            <span class="dot" aria-hidden="true"></span>
+            Contact <small>laptop</small>
+          </button>
+
+        </div>
+      </div>
+
+      <footer>© <span id="year"></span> Jordan Wang · <a href="#home">Back to top</a></footer>
+    </section>
+
+    <!-- --------------------- Project Overlays Section (pop-up windows for Projects, Resume, Contact) --------------------- -->
+
+    <!-- Projects (Hologram) -->
+    <dialog id="dlg-projects" aria-label="Projects">
+      <div class="modal-head">
+        <div class="modal-title">Projects</div>
+        <button class="icon-btn" data-close aria-label="Close projects dialog">✕</button>
+      </div>
+      <div class="modal-body hologram">
+        <div class="grid">
+          <!-- Card 1 -->
+          <article class="card">
+            <div class="thumb"></div>
+            <div class="card-body">
+              <h4>PinPark: Parking Occupancy Detection</h4>
+              <p class="muted">Trained ViTDet, YOLOv8, and DETR on large-scale datasets; >90% confidence on clear top-down imagery and >80% with occlusions using curated COCO annotations and AWS training.</p>
+              <div class="tags"><span class="tag">PyTorch</span><span class="tag">YOLOv8</span><span class="tag">DETR</span><span class="tag">AWS</span></div>
+              <div class="ext"><a class="btn" href="#" target="_blank" rel="noreferrer noopener">Write-up</a></div>
+            </div>
+          </article>
+
+          <!-- Card 2 -->
+          <article class="card">
+            <div class="thumb"></div>
+            <div class="card-body">
+              <h4>Ubongo: GPT Translation Tool</h4>
+              <p class="muted">Python + Flask app integrating OpenAI for faster, more accurate translations; ~15% accuracy improvement and ~20% faster processing.</p>
+              <div class="tags"><span class="tag">Python</span><span class="tag">Flask</span><span class="tag">OpenAI API</span></div>
+              <div class="ext"><a class="btn" href="#" target="_blank" rel="noreferrer noopener">Case Study</a></div>
+            </div>
+          </article>
+
+          <!-- Card 3 -->
+          <article class="card">
+            <div class="thumb"></div>
+            <div class="card-body">
+              <h4>Hackathons: Iteris & VoiceXD</h4>
+              <p class="muted">Iteris: analyzed connected-vehicle data to find safety hotspots. VoiceXD: designed campus conversational assistants and demos.</p>
+              <div class="tags"><span class="tag">Python</span><span class="tag">Data Viz</span><span class="tag">Prototyping</span></div>
+              <div class="ext"><a class="btn" href="#" target="_blank" rel="noreferrer noopener">Summary</a></div>
+            </div>
+          </article>
+        </div>
+      </div>
+    </dialog>
+
+    <!-- Resume -->
+    <dialog id="dlg-resume" aria-label="Resume & About">
+      <div class="modal-head">
+        <div class="modal-title">Resume & About</div>
+        <button class="icon-btn" data-close aria-label="Close resume dialog">✕</button>
+      </div>
+      <div class="modal-body">
+        <iframe class="resume-embed" src="assets/resume.pdf"></iframe>
+        <p style="margin-top:10px; color:var(--muted)">If the PDF doesn't load, <a href="assets/resume.pdf" target="_blank" rel="noreferrer noopener">open in a new tab</a>.</p>
+      </div>
+    </dialog>
+
+    <!-- Contact (Hologram) -->
+    <dialog id="dlg-contact" aria-label="Contact Info">
+      <div class="modal-head">
+        <div class="modal-title">Contact</div>
+        <button class="icon-btn" data-close aria-label="Close contact dialog">✕</button>
+      </div>
+      <div class="modal-body hologram">
+        <div class="contact-grid">
+          <div class="contact-item">
+            <div class="glyph">✉︎</div>
+            <a href="mailto:jlwang26@colby.edu">jlwang26@colby.edu</a>
+          </div>
+          <div class="contact-item">
+            <div class="glyph">🔗</div>
+            <a href="https://www.linkedin.com/in/jordan-wang-04b5b1256" target="_blank" rel="noreferrer noopener">LinkedIn</a>
+          </div>
+          <div class="contact-item">
+            <div class="glyph">🐱</div>
+            <a href="https://github.com/JWang6464" target="_blank" rel="noreferrer noopener">GitHub</a>
+          </div>
+          <!-- Optional phone:
+          <div class="contact-item">
+            <div class="glyph">📱</div>
+            <a href="tel:+1XXXXXXXXXX">(+1) XXX-XXX-XXXX</a>
+          </div> -->
+        </div>
+      </div>
+    </dialog>
+
+  </main>
+
+  <script src="assets/js/main.js" defer></script>
 </body>
 </html>
-
-<!-- --------------------- Environment Section (includes interactive background scene with clickable hotspots for projects, featured, resume, and contact) --------------------- -->
-<section class="studio" id="studio" aria-label="Studio scene with interactive hotspots">
-  <div class="rain" aria-hidden="true"></div>
-  <div class="studio-header">Interactive studio — click a screen, the notebook, or the laptop</div>
-
-  <div class="studio-inner">
-    <div class="hotspots" role="img" aria-label="City view with rain; two monitors, a notebook, and a laptop on a desk.">
-
-        <!-- Monitor: Projects -->
-        <button class="hotspot hs-left-monitor"
-                data-dialog="dlg-projects"
-                aria-controls="dlg-projects">
-        <span class="dot" aria-hidden="true"></span>
-        Projects <small>left monitor</small>
-        </button>
-
-      <!-- Notebook/paper that has my resume -->
-      <button class="hotspot hs-notebook"
-              data-dialog="dlg-resume"
-              aria-controls="dlg-resume">
-        <span class="dot" aria-hidden="true"></span>
-        Resume <small>notebook</small>
-      </button>
-
-      <!-- Laptop on the table that has my contact information(hologram) -->
-      <button class="hotspot hs-laptop"
-              data-dialog="dlg-contact"
-              aria-controls="dlg-contact">
-        <span class="dot" aria-hidden="true"></span>
-        Contact <small>laptop</small>
-      </button>
-
-    </div>
-  </div>
-
-  <footer>© <span id="year"></span> Jordan Wang · <a href="#home">Back to top</a></footer>
-</section>
-<!-- --------------------- Project Overlays Section (contains pop-up windows for Projects, Featured, and Resume) ----------------------- -->
-<!-- Projects -->
-<dialog id="dlg-projects" aria-label="Projects">
-  <div class="modal-head">
-    <div class="modal-title">Projects</div>
-    <button class="icon-btn" data-close aria-label="Close projects dialog">✕</button>
-  </div>
-  <div class="modal-body">
-    <div class="grid">
-      <article class="card">
-        <div class="thumb" style="background-image:url('assets/thumbs/medical-graphrag.jpg')"></div>
-        <div class="card-body">
-          <h4>MedicalResearch Agent (GraphRAG)</h4>
-          <p class="muted">Graph-based retrieval for oncology evidence; claim/evidence KGs, provenance, QA validators.</p>
-          <div class="tags"><span class="tag">Python</span><span class="tag">Neo4j</span><span class="tag">RAG</span></div>
-          <div class="ext"><a class="btn" href="https://github.com/JWang6464" target="_blank" rel="noreferrer noopener">Repo</a></div>
-        </div>
-      </article>
-
-      <article class="card">
-        <div class="thumb" style="background-image:url('assets/thumbs/arb-bot.jpg')"></div>
-        <div class="card-body">
-          <h4>Triangular Arbitrage Bot</h4>
-          <p class="muted">Exchange scanner + execution orchestrator; opportunities across CEX/DEX with risk controls.</p>
-          <div class="tags"><span class="tag">Python</span><span class="tag">Trading</span></div>
-          <div class="ext"><a class="btn" href="https://github.com/JWang6464" target="_blank" rel="noreferrer noopener">Repo</a></div>
-        </div>
-      </article>
-
-      <article class="card">
-        <div class="thumb" style="background-image:url('assets/thumbs/tunetales.jpg')"></div>
-        <div class="card-body">
-          <h4>TuneTales (AR + AI)</h4>
-          <p class="muted">An AR/AI music history app — narrative-first curation with scene-driven learning.</p>
-          <div class="tags"><span class="tag">React Native</span><span class="tag">AR</span></div>
-          <div class="ext"><a class="btn" href="https://github.com/JWang6464" target="_blank" rel="noreferrer noopener">Repo</a></div>
-        </div>
-      </article>
-    </div>
-  </div>
-</dialog>
-
-<!-- Featured -->
-<dialog id="dlg-featured" aria-label="Featured Work">
-  <div class="modal-head">
-    <div class="modal-title">Featured</div>
-    <button class="icon-btn" data-close aria-label="Close featured dialog">✕</button>
-  </div>
-  <div class="modal-body">
-    <div class="grid">
-      <article class="card">
-        <div class="thumb" style="background-image:url('assets/thumbs/phebee.jpg')"></div>
-        <div class="card-body">
-          <h4>PheBee-Style Context Filter</h4>
-          <p class="muted">Negation/speculation tagging + section-based chunking to boost RAG precision.</p>
-          <div class="tags"><span class="tag">NLP</span><span class="tag">IR</span></div>
-          <div class="ext"><a class="btn" href="#" target="_blank" rel="noreferrer noopener">Case Study</a></div>
-        </div>
-      </article>
-
-      <article class="card">
-        <div class="thumb" style="background-image:url('assets/thumbs/kg.jpg')"></div>
-        <div class="card-body">
-          <h4>Oncology KG</h4>
-          <p class="muted">Claim/Evidence graph with provenance, FTPS scoring, and QA validators.</p>
-          <div class="tags"><span class="tag">Knowledge Graph</span><span class="tag">Neo4j</span></div>
-          <div class="ext"><a class="btn" href="#" target="_blank" rel="noreferrer noopener">Write-up</a></div>
-        </div>
-      </article>
-    </div>
-  </div>
-</dialog>
-
-<!-- Resume -->
-<dialog id="dlg-resume" aria-label="Resume & About">
-  <div class="modal-head">
-    <div class="modal-title">Resume & About</div>
-    <button class="icon-btn" data-close aria-label="Close resume dialog">✕</button>
-  </div>
-  <div class="modal-body">
-    <iframe class="resume-embed" src="assets/resume.pdf"></iframe>
-    <p style="margin-top:10px; color:var(--muted)">If the PDF doesn't load, <a href="assets/resume.pdf" target="_blank" rel="noreferrer noopener">open in a new tab</a>.</p>
-  </div>
-</dialog>
-
-<!-- Contact (as a popup Hologram) -->
-<dialog id="dlg-contact" aria-label="Contact Info">
-  <div class="modal-head">
-    <div class="modal-title">Contact</div>
-    <button class="icon-btn" data-close aria-label="Close contact dialog">✕</button>
-  </div>
-  <div class="modal-body hologram">
-    <div class="contact-grid">
-      <div class="contact-item">
-        <div class="glyph">✉︎</div>
-        <a href="mailto:your-email@colby.edu">your-email@colby.edu</a>
-      </div>
-      <div class="contact-item">
-        <div class="glyph">🔗</div>
-        <a href="https://www.linkedin.com/in/your-handle/" target="_blank" rel="noreferrer noopener">LinkedIn</a>
-      </div>
-      <div class="contact-item">
-        <div class="glyph">📱</div>
-        <a href="tel:+10000000000">(+1) 000-000-0000</a>
-      </div>
-      <div class="contact-item">
-        <div class="glyph">🐱</div>
-        <a href="https://github.com/JWang6464" target="_blank" rel="noreferrer noopener">GitHub</a>
-      </div>
-    </div>
-  </div>
-</dialog>

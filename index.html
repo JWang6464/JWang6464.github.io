@@ -10,7 +10,7 @@
   <p>This is my first GitHub Pages portfolio site!</p>
 </body>
 </html>
-<!-- ---------------------Intro Section (includes intro text, subheading, and buttons for contact & projects)----------------------- -->
+<!-- --------------------- Intro Section (includes intro text, subheading, and buttons for contact & projects) ----------------------- -->
   <section class="hero" id="home" aria-label="Hero">
     <div class="hero-inner">
       <div class="kicker">Computer Science • AI • Statistics</div>
@@ -26,3 +26,25 @@
       <div class="mouse"></div><span>Scroll</span>
     </div>
   </section>
+  <!-- --------------------- Environment Section (includes interactive background scene with clickable hotspots for projects and resume) ----------------------- -->
+  <section class="studio" id="studio" aria-label="Studio scene with interactive hotspots">
+    <div class="rain" aria-hidden="true"></div>
+    <div class="studio-header">Interactive studio — click a screen or the notebook</div>
+
+    <div class="studio-inner">
+      <div class="hotspots" role="img" aria-label="City view with rain; two monitors and a notebook on a desk.">
+        <button class="hotspot hs-left-monitor" data-dialog="dlg-projects">
+          <span class="dot" aria-hidden="true"></span> Projects <small>left monitor</small>
+        </button>
+        <button class="hotspot hs-right-monitor" data-dialog="dlg-featured">
+          <span class="dot" aria-hidden="true"></span> Featured <small>right monitor</small>
+        </button>
+        <button class="hotspot hs-notebook" data-dialog="dlg-resume">
+          <span class="dot" aria-hidden="true"></span> Resume <small>notebook</small>
+        </button>
+      </div>
+    </div>
+
+    <footer>© <span id="year"></span> Jordan Wang · <a href="#home">Back to top</a></footer>
+  </section>
+</main>

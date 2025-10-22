@@ -80,4 +80,115 @@
 
   <footer>© <span id="year"></span> Jordan Wang · <a href="#home">Back to top</a></footer>
 </section>
-  <!-- --------------------- Project Overlays Section (contains pop-up windows for Projects, Featured, and Resume) ----------------------- -->
+<!-- --------------------- Project Overlays Section (contains pop-up windows for Projects, Featured, and Resume) ----------------------- -->
+<!-- Projects -->
+<dialog id="dlg-projects" aria-label="Projects">
+  <div class="modal-head">
+    <div class="modal-title">Projects</div>
+    <button class="icon-btn" data-close aria-label="Close projects dialog">✕</button>
+  </div>
+  <div class="modal-body">
+    <div class="grid">
+      <article class="card">
+        <div class="thumb" style="background-image:url('assets/thumbs/medical-graphrag.jpg')"></div>
+        <div class="card-body">
+          <h4>MedicalResearch Agent (GraphRAG)</h4>
+          <p class="muted">Graph-based retrieval for oncology evidence; claim/evidence KGs, provenance, QA validators.</p>
+          <div class="tags"><span class="tag">Python</span><span class="tag">Neo4j</span><span class="tag">RAG</span></div>
+          <div class="ext"><a class="btn" href="https://github.com/JWang6464" target="_blank" rel="noreferrer noopener">Repo</a></div>
+        </div>
+      </article>
+
+      <article class="card">
+        <div class="thumb" style="background-image:url('assets/thumbs/arb-bot.jpg')"></div>
+        <div class="card-body">
+          <h4>Triangular Arbitrage Bot</h4>
+          <p class="muted">Exchange scanner + execution orchestrator; opportunities across CEX/DEX with risk controls.</p>
+          <div class="tags"><span class="tag">Python</span><span class="tag">Trading</span></div>
+          <div class="ext"><a class="btn" href="https://github.com/JWang6464" target="_blank" rel="noreferrer noopener">Repo</a></div>
+        </div>
+      </article>
+
+      <article class="card">
+        <div class="thumb" style="background-image:url('assets/thumbs/tunetales.jpg')"></div>
+        <div class="card-body">
+          <h4>TuneTales (AR + AI)</h4>
+          <p class="muted">An AR/AI music history app — narrative-first curation with scene-driven learning.</p>
+          <div class="tags"><span class="tag">React Native</span><span class="tag">AR</span></div>
+          <div class="ext"><a class="btn" href="https://github.com/JWang6464" target="_blank" rel="noreferrer noopener">Repo</a></div>
+        </div>
+      </article>
+    </div>
+  </div>
+</dialog>
+
+<!-- Featured -->
+<dialog id="dlg-featured" aria-label="Featured Work">
+  <div class="modal-head">
+    <div class="modal-title">Featured</div>
+    <button class="icon-btn" data-close aria-label="Close featured dialog">✕</button>
+  </div>
+  <div class="modal-body">
+    <div class="grid">
+      <article class="card">
+        <div class="thumb" style="background-image:url('assets/thumbs/phebee.jpg')"></div>
+        <div class="card-body">
+          <h4>PheBee-Style Context Filter</h4>
+          <p class="muted">Negation/speculation tagging + section-based chunking to boost RAG precision.</p>
+          <div class="tags"><span class="tag">NLP</span><span class="tag">IR</span></div>
+          <div class="ext"><a class="btn" href="#" target="_blank" rel="noreferrer noopener">Case Study</a></div>
+        </div>
+      </article>
+
+      <article class="card">
+        <div class="thumb" style="background-image:url('assets/thumbs/kg.jpg')"></div>
+        <div class="card-body">
+          <h4>Oncology KG</h4>
+          <p class="muted">Claim/Evidence graph with provenance, FTPS scoring, and QA validators.</p>
+          <div class="tags"><span class="tag">Knowledge Graph</span><span class="tag">Neo4j</span></div>
+          <div class="ext"><a class="btn" href="#" target="_blank" rel="noreferrer noopener">Write-up</a></div>
+        </div>
+      </article>
+    </div>
+  </div>
+</dialog>
+
+<!-- Resume -->
+<dialog id="dlg-resume" aria-label="Resume & About">
+  <div class="modal-head">
+    <div class="modal-title">Resume & About</div>
+    <button class="icon-btn" data-close aria-label="Close resume dialog">✕</button>
+  </div>
+  <div class="modal-body">
+    <iframe class="resume-embed" src="assets/resume.pdf"></iframe>
+    <p style="margin-top:10px; color:var(--muted)">If the PDF doesn't load, <a href="assets/resume.pdf" target="_blank" rel="noreferrer noopener">open in a new tab</a>.</p>
+  </div>
+</dialog>
+
+<!-- Contact (as a popup Hologram) -->
+<dialog id="dlg-contact" aria-label="Contact Info">
+  <div class="modal-head">
+    <div class="modal-title">Contact</div>
+    <button class="icon-btn" data-close aria-label="Close contact dialog">✕</button>
+  </div>
+  <div class="modal-body hologram">
+    <div class="contact-grid">
+      <div class="contact-item">
+        <div class="glyph">✉︎</div>
+        <a href="mailto:your-email@colby.edu">your-email@colby.edu</a>
+      </div>
+      <div class="contact-item">
+        <div class="glyph">🔗</div>
+        <a href="https://www.linkedin.com/in/your-handle/" target="_blank" rel="noreferrer noopener">LinkedIn</a>
+      </div>
+      <div class="contact-item">
+        <div class="glyph">📱</div>
+        <a href="tel:+10000000000">(+1) 000-000-0000</a>
+      </div>
+      <div class="contact-item">
+        <div class="glyph">🐱</div>
+        <a href="https://github.com/JWang6464" target="_blank" rel="noreferrer noopener">GitHub</a>
+      </div>
+    </div>
+  </div>
+</dialog>

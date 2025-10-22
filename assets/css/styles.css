@@ -1,216 +1,81 @@
-/* Base variables */
-:root{
-  --bg:#0b0e13; --fg:#e6edf3; --muted:#93a1b2; --brand:#7c9eff;
-}
-*{ box-sizing:border-box; }
-html,body{
-  margin:0; background:var(--bg); color:var(--fg);
-  font-family:Poppins, Inter, system-ui, -apple-system, Segoe UI, Roboto, sans-serif;
-  scroll-behavior:smooth; overflow-x:hidden;
-}
-main{ min-height:100svh; }
+/* basic reset */
+*{ box-sizing:border-box; margin:0; padding:0; }
+html,body{ height:100%; background:#0b0e13; color:#e6edf3; font-family:Poppins, sans-serif; }
 
-/* Introduction to Myself (name and bio) */
-.hero{ isolation:isolate; min-height:100svh; display:grid; place-items:center; text-align:center; }
-.hero::before{
-  content:""; position:absolute; inset:0; z-index:-2;
-  /* the path to the PORTRAIT is assets/portrait.jpg */
-  background:url('../portrait.jpg') center/cover no-repeat fixed;
-  filter:saturate(1) contrast(1.05) brightness(.9); transform:scale(1.02);
-}
-.hero::after{
-  content:""; position:absolute; inset:0; z-index:-1;
-  background:linear-gradient(180deg, rgba(0,0,0,.55) 0%, rgba(0,0,0,.25) 40%, rgba(0,0,0,.55) 100%);
-}
-.hero-inner{ width:min(1100px, 92%); margin-inline:auto; padding:clamp(16px,2vw,32px); display:grid; gap:18px; }
-.kicker{ letter-spacing:.25em; text-transform:uppercase; color:var(--muted); font-weight:600; font-size:.9rem; }
-.title{ font-size:clamp(2.6rem, 7vw, 5.4rem); line-height:1.0; font-weight:800; margin:0; }
-.title .accent{ background:linear-gradient(90deg,#7c9eff,#b992ff 60%,#7c9eff);
-  -webkit-background-clip:text; background-clip:text; color:transparent; text-shadow:0 0 30px rgba(124,158,255,.35); }
-.sub{ max-width:72ch; margin:6px auto 16px; color:var(--fg); opacity:.9; font-size:clamp(1rem,2.2vw,1.2rem); }
-.cta-row{ display:flex; gap:12px; justify-content:center; flex-wrap:wrap; }
-.btn{ --p:12px; padding:var(--p) clamp(16px, 2.2vw, 22px); border-radius:999px;
-  border:1px solid rgba(255,255,255,.2); background:rgba(255,255,255,.08);
-  color:var(--fg); font-weight:600; text-decoration:none; backdrop-filter: blur(6px);
-  transition:.25s transform,.25s box-shadow; }
-.btn:hover{ transform:translateY(-2px); box-shadow:0 10px 24px rgba(0,0,0,.25), inset 0 0 0 999px rgba(255,255,255,.03); }
-.btn.primary{ background:linear-gradient(90deg, rgba(124,158,255,.2), rgba(185,146,255,.2)); border-color:rgba(124,158,255,.5); }
-.scroll-indicator{ position:absolute; bottom:22px; left:50%; translate:-50% 0; font-size:.9rem; color:var(--muted); display:grid; gap:8px; place-items:center; }
-.mouse{ width:20px; height:30px; border:2px solid var(--muted); border-radius:20px; position:relative; }
-.mouse::after{ content:""; position:absolute; top:6px; left:50%; translate:-50% 0; width:3px; height:6px; background:var(--muted); border-radius:2px; animation:scroll 1.6s infinite; }
-@keyframes scroll{ 0%{opacity:1; transform:translateY(0)} 100%{opacity:0; transform:translateY(8px)} }
-
-/* Environment (showing the live city scene) */
-.studio{
-  position:relative; isolation:isolate; min-height:100svh;
-  background:url('../city-studio.jpg') center/cover no-repeat fixed;
-  background-position: calc(50% + var(--cityX, 0px)) calc(50% + var(--cityY, 0px));
-  transition: background-position .08s linear;
-}
-.studio::after{ content:""; position:absolute; inset:0; z-index:0;
-  background:linear-gradient(0deg, rgba(8,11,16,.65), rgba(8,11,16,.28) 40%, rgba(8,11,16,.65)); }
-.studio-header{ position:absolute; top:22px; left:50%; translate:-50% 0;
-  padding:8px 14px; background:rgba(0,0,0,.35); border:1px solid rgba(255,255,255,.1);
-  border-radius:999px; backdrop-filter:blur(6px); color:var(--muted); font-size:.9rem; z-index:4; }
-.studio-inner{ position:relative; z-index:4; width:min(1300px,95%); margin-inline:auto; padding:clamp(12px,2vw,20px); }
-
-/* Rain overlays */
-.rain{ position:absolute; inset:0; z-index:1; pointer-events:none;
-  background:linear-gradient(180deg, rgba(255,255,255,.06), rgba(255,255,255,0) 40%, rgba(255,255,255,.06));
-  opacity:.5; }
-.rain-lines{ position:absolute; inset:0; z-index:2; pointer-events:none;
-  background-image:repeating-linear-gradient(115deg, rgba(255,255,255,.10) 0px, rgba(255,255,255,.10) 2px, rgba(255,255,255,0) 2px, rgba(255,255,255,0) 18px);
-  mix-blend-mode:screen; filter:blur(.4px) brightness(.9); animation:drizzle 1.35s linear infinite; }
-@keyframes drizzle{ from{ background-position:0 0 } to{ background-position:0 28px } }
-.rain-drops{ position:absolute; inset:0; z-index:3; pointer-events:none;
-  background:
-    radial-gradient(8px 12px at 20% 10%, rgba(255,255,255,.22), rgba(255,255,255,0) 60%),
-    radial-gradient(10px 14px at 70% 18%, rgba(255,255,255,.18), rgba(255,255,255,0) 62%),
-    radial-gradient(7px 10px  at 35% 30%, rgba(255,255,255,.20), rgba(255,255,255,0) 60%),
-    radial-gradient(9px 12px  at 60% 42%, rgba(255,255,255,.18), rgba(255,255,255,0) 62%),
-    radial-gradient(6px 9px   at 80% 8%,  rgba(255,255,255,.18), rgba(255,255,255,0) 62%);
-  filter:blur(.2px); animation:drops 6s linear infinite; opacity:.9; }
-@keyframes drops{ 0%{ transform:translateY(-10px) } 100%{ transform:translateY(20px) } }
-
-/* Hotspots (areas on the screen for clicking) */
-.hotspots{ position:relative; width:100%; height:min(78svh, 820px); }
-.hotspot{
-  position:absolute; transform:translate(-50%,-50%); background:rgba(20,24,34,.65);
-  border:1px solid rgba(255,255,255,.18); border-radius:14px; padding:10px 14px; display:flex; align-items:center; gap:8px;
-  cursor:pointer; backdrop-filter:blur(6px); transition:.2s transform,.2s box-shadow; color:var(--fg); font-weight:600; text-decoration:none;
-}
-.hotspot:hover{ transform:translate(-50%,-52%); box-shadow:0 14px 30px rgba(0,0,0,.35); }
-.hotspot .dot{ width:10px; height:10px; border-radius:50%; background:var(--brand); box-shadow:0 0 12px rgba(124,158,255,.8); }
-.hotspot small{ color:var(--muted); font-weight:600; letter-spacing:.02em; }
-
-/* Positions for the left monitor, notebook, and laptop */
-.hs-left-monitor{ left:27%; top:40%; }
-.hs-notebook   { left:52%; top:68%; }
-.hs-laptop     { left:80%; top:62%; }
-
-/* “Screens on” glow for monitor/laptop */
-.hs-left-monitor::before, .hs-laptop::before{
-  content:""; position:absolute; inset:-18px -22px; z-index:-1; border-radius:22px;
-  box-shadow:0 0 38px rgba(124,158,255,.45), 0 0 12px rgba(124,158,255,.35) inset;
-  opacity:.85; filter:blur(2px); animation:screenPulse 2.6s ease-in-out infinite;
-}
-@keyframes screenPulse{ 0%,100%{opacity:.75} 50%{opacity:1} }
-.hs-left-monitor::after, .hs-laptop::after{
-  content:""; position:absolute; left:-20px; right:-20px; bottom:-14px; height:2px;
-  background:linear-gradient(90deg, transparent, rgba(124,158,255,.5), transparent);
-  opacity:.55; filter:blur(1px);
-}
-
-/* Footer inside studio */
-section.studio footer{ position:absolute; bottom:10px; right:12px; opacity:.7; font-size:.9rem; z-index:4; }
-section.studio footer a{ color:var(--brand); }
-
-/* Dialogs/cards */
-dialog{ border:none; border-radius:18px; padding:0; background:rgba(15,18,26,.85); color:var(--fg);
-  width:min(900px, 92%); box-shadow:0 40px 100px rgba(0,0,0,.5); backdrop-filter: blur(10px); }
-dialog::backdrop{ background:rgba(0,0,0,.6); }
-.modal-head{ display:flex; align-items:center; justify-content:space-between; padding:18px 22px; border-bottom:1px solid rgba(255,255,255,.08); }
-.modal-title{ font-weight:800; letter-spacing:.01em; }
-.icon-btn{ background:transparent; border:1px solid rgba(255,255,255,.2); color:var(--fg); border-radius:10px; padding:8px 10px; cursor:pointer; }
-.modal-body{ padding:18px 22px 24px; }
-
-/* Project grid/cards */
-.grid{ display:grid; grid-template-columns:repeat(auto-fit, minmax(240px,1fr)); gap:14px; }
-.card{ background:rgba(255,255,255,.04); border:1px solid rgba(255,255,255,.12); border-radius:16px; overflow:hidden; display:flex; flex-direction:column; }
-.thumb{ aspect-ratio:16/9; background:#0f131a center/cover no-repeat; } /* no images needed; shows a neutral block */
-.card-body{ padding:12px 14px 16px; display:grid; gap:6px; }
-.card h4{ margin:0; font-size:1.05rem; }
-.tags{ display:flex; flex-wrap:wrap; gap:6px; }
-.tag{ font-size:.75rem; padding:4px 8px; border-radius:999px; border:1px solid rgba(255,255,255,.16); color:var(--muted); }
-.ext{ margin-top:8px; }
-
-/* Hologram popup for the contact information */
-.hologram{
-  background: radial-gradient(1200px 600px at 50% -10%, rgba(124,158,255,.08), transparent 60%),
-              rgba(15,18,26,.85);
-  border-radius:0 0 18px 18px;
-}
-.contact-grid{ display:grid; grid-template-columns:repeat(auto-fit, minmax(220px,1fr)); gap:12px; }
-.contact-item{
-  display:flex; align-items:center; gap:10px; padding:10px 12px;
-  border:1px solid rgba(124,158,255,.3); border-radius:12px;
-  background:rgba(124,158,255,.06); box-shadow: inset 0 0 40px rgba(124,158,255,.08);
-}
-.contact-item a{ color:var(--fg); text-decoration:none; }
-.glyph{
-  width:28px; height:28px; display:grid; place-items:center;
-  border:1px solid rgba(124,158,255,.5); border-radius:8px;
-  box-shadow:0 0 18px rgba(124,158,255,.25), inset 0 0 18px rgba(124,158,255,.12);
-  font-size:14px; opacity:.95;
-}
-
-/* Resume iframe */
-.resume-embed{ width:100%; height:min(70svh,680px); border:1px solid rgba(255,255,255,.12); border-radius:14px; background:#0f131a; }
-
-/* Small screens */
-@media (max-width:640px){
-  .title{ line-height:1.05; }
-  .hotspot{ padding:8px 10px; }
-  .studio-header{ font-size:.8rem; }
-}
-
-/* Office Scene (video background + foreground art) */
+/* office scene stuff */
 .office-scene{
-  position:relative;
-  isolation:isolate;
-  min-height:100svh;
-  overflow:hidden;
-  display:block;
+  position:relative; min-height:100svh; overflow:hidden;
+  display:grid; place-items:center; text-align:center;
 }
-
-.office-scene footer{
-  position:absolute;
-  bottom:10px;
-  right:12px;
-  opacity:.7;
-  font-size:.9rem;
-  z-index:5;
-}
-.office-scene footer a{ color:var(--brand); }
-
 .bg-video{
-  position:absolute;
-  inset:0;
-  width:100%;
-  height:100%;
-  object-fit:cover;
+  position:absolute; inset:0; width:100%; height:100%; object-fit:cover;
+  filter:brightness(.9) contrast(1.1);
   z-index:0;
-  filter:brightness(.92) contrast(1.06);
 }
 
-/* Warm desk lamp glow */
+/* subtle glow/light overlay */
 .light-glow{
-  position:absolute;
-  inset:0;
-  z-index:1;
-  pointer-events:none;
+  position:absolute; inset:0; pointer-events:none;
   background:
-    radial-gradient(900px 520px at 60% 78%, rgba(255,214,170,.14), transparent 60%),
-    radial-gradient(700px 400px at 35% 85%, rgba(255,214,170,.08), transparent 60%);
-  mix-blend-mode:screen;
+    radial-gradient(800px 400px at 60% 80%, rgba(255,214,170,.1), transparent 60%);
+  z-index:2;
 }
 
-/* Single combined transparent PNG for desk+boy+window */
-.foreground{
-  position:absolute;
-  left:50%; bottom:0;
-  transform:translateX(-50%);
-  width:min(1200px, 92vw);
-  height:auto;
-  z-index:3;
-  pointer-events:none;
+/* layered art */
+.window-frame{ position:absolute; inset:0; z-index:3; pointer-events:none; }
+.character{ position:absolute; bottom:0; left:50%; transform:translateX(-50%);
+  z-index:4; width:min(800px,70vw); filter:drop-shadow(0 5px 10px rgba(0,0,0,.4));
+  animation:float 6s ease-in-out infinite;
 }
+@keyframes float{ 0%,100%{transform:translateX(-50%) translateY(0)} 50%{transform:translateX(-50%) translateY(3px)} }
+.desk{ position:absolute; bottom:0; left:50%; transform:translateX(-50%); z-index:5; width:min(1200px,95vw); }
 
-/* Dialogs should appear above the scene */
-dialog{ z-index:10; }
+/* clickable desk spots */
+.desk-items{ position:absolute; left:50%; bottom:0; transform:translateX(-50%); width:min(1200px,95vw); z-index:6; }
+.desk-item{
+  position:absolute; background:rgba(255,255,255,.05); border:1px solid rgba(255,255,255,.1);
+  border-radius:10px; cursor:pointer; backdrop-filter:blur(6px);
+  transition:.2s ease;
+}
+.desk-item:hover{ transform:translateY(-2px); box-shadow:0 8px 18px rgba(0,0,0,.4); }
 
-/* Reduced motion */
-@media (prefers-reduced-motion: reduce){
-  .bg-video{ filter:none; }
-  .light-glow{ background:none; }
+/* tweak these positions once your PNGs are in */
+.desk-item.notebook{ left:20%; bottom:120px; width:140px; height:90px; }
+.desk-item.laptop{ left:45%; bottom:140px; width:200px; height:120px; }
+.desk-item.monitor{ left:70%; bottom:260px; width:220px; height:140px; }
+
+/* front page text */
+.intro{ position:relative; z-index:7; max-width:800px; padding:2rem; }
+.kicker{ font-size:.9rem; letter-spacing:.2em; text-transform:uppercase; opacity:.8; }
+.title{ font-size:clamp(2.2rem,6vw,4.5rem); margin:1rem 0; font-weight:800; }
+.accent{ background:linear-gradient(90deg,#7c9eff,#b992ff); -webkit-background-clip:text; color:transparent; }
+.sub{ font-size:1.1rem; opacity:.9; margin-bottom:1.5rem; }
+.cta-row{ display:flex; gap:10px; justify-content:center; flex-wrap:wrap; }
+
+/* buttons */
+.btn{ border:none; border-radius:999px; padding:10px 22px; cursor:pointer;
+  background:rgba(255,255,255,.08); color:#fff; font-weight:600;
+  backdrop-filter:blur(6px); transition:.25s ease;
+}
+.btn.primary{ background:linear-gradient(90deg, rgba(124,158,255,.25), rgba(185,146,255,.25)); }
+.btn:hover{ transform:translateY(-2px); box-shadow:0 10px 20px rgba(0,0,0,.3); }
+
+/* footer */
+footer{ position:absolute; bottom:12px; right:16px; opacity:.7; font-size:.9rem; z-index:8; }
+footer a{ color:#7c9eff; }
+
+/* modals */
+dialog{ border:none; border-radius:18px; background:rgba(15,18,26,.85); color:#fff;
+  width:min(900px,90%); box-shadow:0 40px 100px rgba(0,0,0,.5); backdrop-filter:blur(10px);
+}
+dialog::backdrop{ background:rgba(0,0,0,.6); }
+.modal-head{ display:flex; justify-content:space-between; padding:1rem 1.4rem; border-bottom:1px solid rgba(255,255,255,.1); }
+.icon-btn{ background:none; border:1px solid rgba(255,255,255,.2); color:#fff; border-radius:8px; padding:6px 10px; cursor:pointer; }
+.modal-body{ padding:1.4rem; }
+.grid{ display:grid; grid-template-columns:repeat(auto-fit,minmax(250px,1fr)); gap:1rem; }
+.card{ background:rgba(255,255,255,.05); padding:1rem; border-radius:12px; border:1px solid rgba(255,255,255,.1); }
+
+/* responsive stuff */
+@media(max-width:700px){
+  .character{ width:80vw; }
 }

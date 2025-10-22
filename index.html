@@ -15,12 +15,12 @@
       <div class="hero-inner">
         <div class="kicker">Computer Science • AI • Statistics</div>
         <h1 class="title">
-          Hi, I’m <span class="accent">Jordan Wang</span> — I build
-          <span class="accent">useful</span> things that feel like magic.
+          Hi, I’m <span class="accent">Jordan!</span> I'm an aspiring AI engineer who loves
+          <span class="accent">basketball</span> and everything technology :)
         </h1>
         <p class="sub">
           Senior at Colby College concentrating in Artificial Intelligence with a Statistics minor.
-          I love turning complex ideas into crisp, practical tools.
+          Looking for opportunities to apply AI and software in impactful ways!
         </p>
         <div class="cta-row">
           <a class="btn primary" href="#studio">Explore my work ↓</a>
@@ -34,9 +34,11 @@
     </section>
 
     <!-- --------------------- Environment Section (includes interactive background scene with clickable hotspots for projects, resume, and contact) --------------------- -->
-    <section class="studio" id="studio" aria-label="Studio scene with interactive hotspots">
-      <div class="rain" aria-hidden="true"></div>
-      <div class="studio-header">Interactive studio — click a screen, the notebook, or the laptop</div>
+      <section class="studio" id="studio" aria-label="Studio scene with interactive hotspots">
+        <div class="rain" aria-hidden="true"></div>
+        <div class="rain-lines" aria-hidden="true"></div>
+        <div class="rain-drops" aria-hidden="true"></div>
+        <div class="studio-header">Interactive studio — click a screen, the notebook, or the laptop</div>
 
       <div class="studio-inner">
         <div class="hotspots" role="img"
@@ -125,8 +127,11 @@
         <button class="icon-btn" data-close aria-label="Close resume dialog">✕</button>
       </div>
       <div class="modal-body">
-        <iframe class="resume-embed" src="assets/resume.pdf"></iframe>
-        <p style="margin-top:10px; color:var(--muted)">If the PDF doesn't load, <a href="assets/resume.pdf" target="_blank" rel="noreferrer noopener">open in a new tab</a>.</p>
+        <object class="resume-embed" data="assets/resume.pdf" type="application/pdf" width="100%" height="600">
+          <p>PDF preview not available. <a href="assets/resume.pdf" target="_blank" rel="noreferrer noopener">Open in a new tab</a> or <a href="assets/resume.pdf" download>Download</a>.</p>
+        </object>
+        <p style="margin-top:10px; color:var(--muted)">
+        </p>
       </div>
     </dialog>
 
@@ -150,11 +155,6 @@
             <div class="glyph">🐱</div>
             <a href="https://github.com/JWang6464" target="_blank" rel="noreferrer noopener">GitHub</a>
           </div>
-          <!-- Optional phone:
-          <div class="contact-item">
-            <div class="glyph">📱</div>
-            <a href="tel:+1XXXXXXXXXX">(+1) XXX-XXX-XXXX</a>
-          </div> -->
         </div>
       </div>
     </dialog>

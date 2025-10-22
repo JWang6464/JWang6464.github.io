@@ -35,26 +35,49 @@
 </body>
 </html>
 
-  <!-- --------------------- Environment Section (includes interactive background scene with clickable hotspots for projects and resume) ----------------------- -->
-  <section class="studio" id="studio" aria-label="Studio scene with interactive hotspots">
-    <div class="rain" aria-hidden="true"></div>
-    <div class="studio-header">Interactive studio — click a screen or the notebook</div>
+<!-- --------------------- Environment Section (includes interactive background scene with clickable hotspots for projects, featured, resume, and contact) --------------------- -->
+<section class="studio" id="studio" aria-label="Studio scene with interactive hotspots">
+  <div class="rain" aria-hidden="true"></div>
+  <div class="studio-header">Interactive studio — click a screen, the notebook, or the laptop</div>
 
-    <div class="studio-inner">
-      <div class="hotspots" role="img" aria-label="City view with rain; two monitors and a notebook on a desk.">
-        <button class="hotspot hs-left-monitor" data-dialog="dlg-projects">
-          <span class="dot" aria-hidden="true"></span> Projects <small>left monitor</small>
-        </button>
-        <button class="hotspot hs-right-monitor" data-dialog="dlg-featured">
-          <span class="dot" aria-hidden="true"></span> Featured <small>right monitor</small>
-        </button>
-        <button class="hotspot hs-notebook" data-dialog="dlg-resume">
-          <span class="dot" aria-hidden="true"></span> Resume <small>notebook</small>
-        </button>
-      </div>
+  <div class="studio-inner">
+    <div class="hotspots" role="img" aria-label="City view with rain; two monitors, a notebook, and a laptop on a desk.">
+
+      <!-- Left monitor that has all of the projects -->
+      <button class="hotspot hs-left-monitor"
+              data-dialog="dlg-projects"
+              aria-controls="dlg-projects">
+        <span class="dot" aria-hidden="true"></span>
+        Projects <small>left monitor</small>
+      </button>
+
+      <!-- Right monitor that has featured -->
+      <button class="hotspot hs-right-monitor"
+              data-dialog="dlg-featured"
+              aria-controls="dlg-featured">
+        <span class="dot" aria-hidden="true"></span>
+        Featured <small>right monitor</small>
+      </button>
+
+      <!-- Notebook/paper that has my resume -->
+      <button class="hotspot hs-notebook"
+              data-dialog="dlg-resume"
+              aria-controls="dlg-resume">
+        <span class="dot" aria-hidden="true"></span>
+        Resume <small>notebook</small>
+      </button>
+
+      <!-- Laptop on the table that has my contact information(hologram) -->
+      <button class="hotspot hs-laptop"
+              data-dialog="dlg-contact"
+              aria-controls="dlg-contact">
+        <span class="dot" aria-hidden="true"></span>
+        Contact <small>laptop</small>
+      </button>
+
     </div>
+  </div>
 
-    <footer>© <span id="year"></span> Jordan Wang · <a href="#home">Back to top</a></footer>
-  </section>
-</main>
+  <footer>© <span id="year"></span> Jordan Wang · <a href="#home">Back to top</a></footer>
+</section>
   <!-- --------------------- Project Overlays Section (contains pop-up windows for Projects, Featured, and Resume) ----------------------- -->

@@ -74,7 +74,7 @@ if (yearEl) yearEl.textContent = new Date().getFullYear();
     const startX = rnd(-dw, b0.width * 0.4);
     const startY = rnd(0, Math.max(0, b0.height - dh));
 
-    const speed = pickSpeed(); // px/sec to the right
+    const speed = pickSpeed();
     movers.push({ el:d, x:startX, y:startY, w:dw, h:dh, speed, active:true });
   });
 

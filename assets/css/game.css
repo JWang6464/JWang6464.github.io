@@ -3,7 +3,7 @@
 html,body{ height:100%; background:#0b0e13; color:#e6edf3; font-family:Poppins, Inter, system-ui, sans-serif; }
 a{ color:inherit; text-decoration:none; }
 
-/* cursor (css in assets/css, image in assets/, so ..) */
+/* cursor */
 :root { --saber: url("../Lightsaber.png") 16 16; }
 html, body, .office-scene, .office-scene *:not(input):not(textarea):not(button){
   cursor: var(--saber), auto !important;
@@ -33,14 +33,14 @@ a, button, [role="button"], .drone, .bg-video{
   will-change:transform;
 }
 
-/* glow (don’t block clicks) */
+/* glow */
 .light-glow{
   position:absolute; inset:0;
   z-index:1; pointer-events:none;
   background:radial-gradient(800px 400px at 60% 80%, rgba(255,214,170,.12), transparent 62%);
 }
 
-/* header (no bubble; just punchy text) */
+/* header */
 .intro-text{
   position:absolute; top:8%; left:50%; transform:translateX(-50%);
   width:min(900px, 92%);
@@ -55,7 +55,7 @@ a, button, [role="button"], .drone, .bg-video{
 /* drones layer */
 .drone-layer{ position:absolute; inset:0; z-index:2; pointer-events:auto; }
 
-/* drones (JS moves them l→r) */
+/* drones */
 .drone{
   position:absolute; left:0; top:0;
   width:140px; height:auto;
@@ -65,7 +65,7 @@ a, button, [role="button"], .drone, .bg-video{
   will-change:transform, opacity;
 }
 
-/* hit (spiral + fall) — JS sets --dur/--drift */
+/* hitting the robots */
 .drone.hit{
   pointer-events:none;
   animation:spiralDown var(--dur, 1100ms) cubic-bezier(.28,.73,.39,1.01) forwards;
@@ -82,7 +82,7 @@ a, button, [role="button"], .drone, .bg-video{
   100% { transform:translate(var(--drift, 0px), 520px) rotate(760deg) scale(.8); opacity:0; }
 }
 
-/* reward */
+/* reward after the robots are defeated! */
 .victory-message{
   position:absolute; inset:0;
   display:grid; place-items:center;

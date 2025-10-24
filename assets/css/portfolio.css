@@ -1,0 +1,112 @@
+/* base */
+*{ box-sizing:border-box; margin:0; padding:0; }
+:root{
+  --bg:#0b0e13; --fg:#e6edf3; --muted:#a7b5c7; --accent:#7c9eff; --line:#1d2530;
+  --gap: clamp(16px, 4vw, 40px);
+}
+html,body{ height:100%; background:var(--bg); color:var(--fg); font-family:Poppins, system-ui, sans-serif; }
+img, video{ display:block; max-width:100%; height:auto; }
+
+/* full-screen panels */
+.panel{
+  position:relative;
+  min-height:100svh;
+  display:grid;
+  align-items:center;
+  padding: clamp(18px, 3vw, 28px);
+}
+
+/* Hero or the Introduction Section :) */
+.hero .hero-inner{
+  display:grid;
+  grid-template-columns: 1fr 0.9fr;
+  gap: var(--gap);
+  align-items:center;
+  max-width: 1200px;
+  margin: 0 auto;
+  background:
+    radial-gradient(900px 420px at 70% 80%, rgba(124,158,255,.08), transparent 60%),
+    linear-gradient(180deg, rgba(255,255,255,.02), transparent 40%);
+}
+
+.id-block{
+  margin-left: clamp(8px, 4vw, 48px);
+  margin-top: clamp(12px, 5vh, 60px);
+  max-width: 44ch;
+  transform: translateY(var(--id-y, 0px)) scale(var(--id-scale, 1));
+  opacity: var(--id-op, 1);
+  will-change: transform, opacity;
+  transition: opacity .2s linear;
+}
+.name{ font-weight:800; font-size: clamp(2rem, 6vw, 3.4rem); letter-spacing:.2px; }
+.title{ margin-top: 8px; color:#cfe8ff; font-weight:700; font-size: clamp(1rem, 2.4vw, 1.25rem); }
+.blurb{ margin-top: 10px; color:var(--muted); line-height:1.55; }
+
+.portrait-wrap{
+  justify-self:end;
+  margin-right: clamp(8px, 4vw, 48px);
+  filter: drop-shadow(0 24px 60px rgba(50,80,140,.28));
+  transform: translateY(var(--ph-y, 0px)) scale(var(--ph-scale, 1));
+  opacity: var(--ph-op, 1);
+  will-change: transform, opacity;
+}
+.portrait{
+  width:min(40vw, 520px);
+  border-radius: 20px;
+  border:1px solid var(--line);
+  object-fit: cover;
+}
+
+/* scroll hint */
+.scroll-hint{
+  position:absolute; left:50%; bottom:14px; transform:translateX(-50%);
+  font-size:.9rem; color:#cfe8ff; opacity:.7;
+}
+
+/* Bio Section */
+.bio .bio-inner{
+  display:grid;
+  grid-template-columns: 1fr 1fr;
+  gap: var(--gap);
+  align-items:center;
+  max-width: 1200px; margin: 0 auto;
+}
+.bio-copy{
+  max-width: 60ch;
+  margin-left: clamp(8px, 4vw, 48px);
+  transform: translateY(var(--bio-y, 24px));
+  opacity: var(--bio-op, 0);
+  will-change: transform, opacity;
+}
+.bio-copy h2{ font-size: clamp(1.4rem, 3.2vw, 2rem); margin-bottom: 10px; }
+.bio-copy p{ color: var(--muted); line-height:1.6; margin-bottom: 10px; }
+
+.ball-wrap{ justify-self:end; margin-right: clamp(8px, 4vw, 48px); }
+
+/* basketball (video) + fallback */
+.basketball-video, .basketball-fallback{
+  width: min(40vw, 420px);
+  aspect-ratio: 1 / 1;
+  filter: drop-shadow(0 24px 60px rgba(0,0,0,.35));
+  object-fit: contain;
+}
+.basketball-video.is-ready + .basketball-fallback,
+.basketball-video.is-ready ~ .basketball-fallback{
+  display: none;
+}
+
+/* motion preferences */
+@media (prefers-reduced-motion: reduce){
+  *{ animation:none !important; transition:none !important; }
+  .id-block, .portrait-wrap, .bio-copy{ transform:none !important; opacity:1 !important; }
+  .basketball-video{ display:none !important; }
+  .basketball-fallback{ display:block !important; }
+}
+
+/* small screens */
+@media (max-width: 820px){
+  .hero .hero-inner, .bio .bio-inner{ grid-template-columns: 1fr; }
+  .portrait-wrap, .ball-wrap{ justify-self:center; margin: 0 auto; }
+  .portrait{ width:min(80vw, 520px); }
+  .basketball-video, .basketball-fallback{ width:min(66vw, 420px); }
+}

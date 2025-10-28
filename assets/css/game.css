@@ -1,0 +1,122 @@
+/* reset */
+*{ box-sizing:border-box; margin:0; padding:0; }
+html,body{ height:100%; background:#0b0e13; color:#e6edf3; font-family:Poppins, Inter, system-ui, sans-serif; }
+a{ color:inherit; text-decoration:none; }
+
+/* cursor */
+:root { --saber: url("../Lightsaber.png") 16 16; }
+html, body, .office-scene, .office-scene *:not(input):not(textarea):not(button){
+  cursor: var(--saber), auto !important;
+}
+a, button, [role="button"], .drone, .bg-video{
+  cursor: var(--saber), pointer !important;
+}
+
+/* scene */
+.office-scene{
+  position:relative;
+  min-height:100svh;
+  overflow:hidden;
+  display:grid;
+  place-items:center;
+  text-align:center;
+}
+
+/* bg video */
+.bg-video{
+  position:absolute; inset:0;
+  width:100%; height:100%;
+  object-fit:cover;
+  filter:brightness(.9) contrast(1.1);
+  z-index:0;
+  transform:translateZ(0);
+  will-change:transform;
+}
+
+/* glow */
+.light-glow{
+  position:absolute; inset:0;
+  z-index:1; pointer-events:none;
+  background:radial-gradient(800px 400px at 60% 80%, rgba(255,214,170,.12), transparent 62%);
+}
+
+/* header */
+.intro-text{
+  position:absolute; top:8%; left:50%; transform:translateX(-50%);
+  width:min(900px, 92%);
+  z-index:3; pointer-events:none;
+  text-shadow:
+    0 0 10px rgba(0,0,0,.65),
+    0 0 22px rgba(0,0,0,.45);
+}
+.intro-text h1{ font-size:clamp(1.3rem, 3.4vw, 2.2rem); font-weight:800; color:#eaf2ff; }
+.intro-text p{ margin-top:6px; color:#cfe8ff; }
+
+/* drones layer */
+.drone-layer{ position:absolute; inset:0; z-index:2; pointer-events:auto; }
+
+/* drones */
+.drone{
+  position:absolute; left:0; top:0;
+  width:140px; height:auto;
+  animation:none;
+  transition:opacity .4s ease, filter .25s ease;
+  user-select:none; -webkit-user-drag:none;
+  will-change:transform, opacity;
+}
+
+/* hitting the robots */
+.drone.hit{
+  pointer-events:none;
+  animation:spiralDown var(--dur, 1100ms) cubic-bezier(.28,.73,.39,1.01) forwards;
+  filter:saturate(.7) brightness(.95);
+  z-index:3;
+}
+
+@keyframes spiralDown{
+  0%   { transform:translate(0,0) rotate(0deg)    scale(1);   opacity:1; }
+  20%  { transform:translate(34px,60px) rotate(140deg)  scale(.98); opacity:.95; }
+  40%  { transform:translate(-26px,150px) rotate(280deg) scale(.95); opacity:.9; }
+  60%  { transform:translate(16px,260px) rotate(460deg)  scale(.9);  opacity:.75; }
+  80%  { transform:translate(-8px,380px) rotate(640deg)  scale(.85); opacity:.5; }
+  100% { transform:translate(var(--drift, 0px), 520px) rotate(760deg) scale(.8); opacity:0; }
+}
+
+/* reward after the robots are defeated! */
+.victory-message{
+  position:absolute; inset:0;
+  display:grid; place-items:center;
+  background:rgba(0,0,0,.75);
+  color:#eafff6;
+  opacity:0; z-index:5;
+  pointer-events:none;
+  transition:opacity .8s ease;
+  text-align:center;
+}
+.victory-message.show{
+  opacity:1;
+  pointer-events:auto;
+}
+.win-box{ width:min(680px, 92%); display:grid; gap:14px; }
+.reward-label{ color:#bfe7ff; }
+.btn{
+  display:inline-block; padding:12px 18px; border-radius:12px;
+  background:#7c9eff; color:#0b0e13; font-weight:800;
+  transition:transform .15s ease, box-shadow .15s ease, opacity .15s ease;
+  box-shadow:0 6px 20px rgba(124,158,255,.35);
+}
+.btn:hover{ transform:translateY(-1px); }
+.btn:active{ transform:translateY(0); opacity:.9; }
+
+/* reduce motion */
+@media (prefers-reduced-motion: reduce){
+  *{ animation:none !important; transition:none !important; }
+  .bg-video{ filter:none; }
+  .light-glow{ background:none; }
+}
+
+/* small screens */
+@media (max-width:640px){
+  .drone{ width:110px; }
+  .intro-text{ top:6%; }
+}

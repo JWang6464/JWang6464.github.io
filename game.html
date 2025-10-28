@@ -1,0 +1,49 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Jordan Wang • Defeat the Bots</title>
+
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="assets/css/game.css" />
+</head>
+
+<body>
+  <main>
+    <section class="office-scene" id="home">
+      <video class="bg-video" autoplay loop muted playsinline webkit-playsinline>
+        <source src="assets/videos/city_view.mp4" type="video/mp4" />
+        your browser can’t show this video.
+      </video>
+
+      <!-- header -->
+      <div class="intro-text">
+        <h1>Defeat the Three Malicious AI Bots</h1>
+        <p>Click all three to save the world.</p>
+      </div>
+
+      <!-- bots -->
+      <div class="drone-layer">
+        <img src="assets/images/robot.png" alt="AI Drone" class="drone">
+        <img src="assets/images/robot.png" alt="AI Drone" class="drone">
+        <img src="assets/images/robot.png" alt="AI Drone" class="drone">
+      </div>
+
+      <div class="light-glow" aria-hidden="true"></div>
+
+      <!-- reward -->
+      <div class="victory-message" id="victory-msg">
+        <div class="win-box">
+          <h2>Congratulations, You’ve Saved the World from AI!!</h2>
+          <p class="reward-label">Your Reward:</p>
+          <a id="reward-link" class="btn" href="portfolio.html" target="_self" rel="noopener">Jordan’s Portfolio</a>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <script src="assets/js/game.js" defer></script>
+</body>
+</html>

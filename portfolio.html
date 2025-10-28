@@ -1,0 +1,199 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Jordan Wang • Portfolio</title>
+
+  <!-- fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;700;800&display=swap" rel="stylesheet" />
+
+  <!-- css -->
+  <link rel="preload" as="style" href="assets/css/portfolio.css" />
+  <link rel="stylesheet" href="assets/css/portfolio.css" />
+
+  <!-- mobile tint -->
+  <meta name="theme-color" content="#f2f6f3" media="(prefers-color-scheme: light)">
+  <meta name="theme-color" content="#2e4b40" media="(prefers-color-scheme: dark)">
+</head>
+
+<!-- shards in hero; fade to global bg for the rest -->
+<body class="theme-sage rest-bg-off">
+  <nav class="topnav" aria-label="Primary">
+    <a href="#hero">Home</a>
+    <a href="#about">About</a>
+    <a href="#work">Work</a>
+    <a href="#projects">Projects</a>
+    <a href="#skills">Skills</a>
+    <a href="#education">Education</a>
+    <a href="#contact">Contact</a>
+  </nav>
+
+  <main>
+    <!-- hero -->
+    <section class="panel hero" id="hero" aria-label="Intro">
+      <canvas id="crystalsFx" class="bgfx" aria-hidden="true"></canvas>
+      <div class="hero-inner">
+        <header class="id-block">
+          <h1 class="name">Hi, I'm Jordan</h1>
+          <p class="blurb">AI/ML Engineer Studying Computer Science: AI + Statistics at Colby College!</p>
+        </header>
+      </div>
+    </section>
+
+    <!-- about -->
+    <section class="panel bio" id="about" aria-label="About">
+      <div class="bio-inner">
+        <div class="bio-copy">
+          <h2>About</h2>
+          <p>I build AI features and infra from idea → shipped impact: clean data flows, fast inference paths, and measurable UX. Small enough to move, big enough to matter.</p>
+          <p>Focused on vision workflows, model optimization, and durable GenAI surfaces. Also: music, hoops, and weird UI tinkering.</p>
+        </div>
+        <figure class="ball-wrap" aria-label="Basketball">
+          <img class="basketball" src="assets/images/basketball.svg" alt="" width="420" height="420" loading="lazy" decoding="async">
+        </figure>
+      </div>
+    </section>
+
+    <!-- work -->
+    <section class="panel" id="work" aria-label="Work">
+      <div class="skills-inner" style="max-width:1200px;margin:0 auto;">
+        <h2>Work</h2>
+
+        <div class="role">
+          <h3>Software & AI Integration Intern · PinPark Inc.</h3>
+          <p class="muted">May 2025 – Present</p>
+          <ul>
+            <li>Built large-scale parking lot datasets (YouTube/EarthCam/Kaggle/web): frame extraction, filtering, COCO.</li>
+            <li>Trained/fine-tuned ViTDet, YOLOv8, DETR on AWS; curation + augments to squash misclassifications.</li>
+            <li>&gt;90% confidence on clear top-downs; &gt;80% with occlusion → reliable occupancy readouts.</li>
+          </ul>
+        </div>
+
+        <div class="role">
+          <h3>Generative AI Extern · Cognizant</h3>
+          <p class="muted">May 2025 – Jun 2025</p>
+          <ul>
+            <li>Python for AI/ML, prompt design, LLM API integration; shipped small end-to-end demos.</li>
+            <li>Consulting reps: scope → trade-offs → crisp readouts.</li>
+          </ul>
+        </div>
+
+        <div class="role">
+          <h3>AI Engineer Intern · Ubongo</h3>
+          <p class="muted">Jun 2024 – Sep 2024</p>
+          <ul>
+            <li>Automated translation tool (Python, OpenAI API, Flask, JS) with live review loop.</li>
+            <li>+15% accuracy, −20% processing time; cultural QA with native speakers.</li>
+          </ul>
+        </div>
+
+        <div class="role">
+          <h3>Computer Science Project Grader · Colby College</h3>
+          <p class="muted">Feb 2025 – Present</p>
+          <ul>
+            <li>Graded for correctness/efficiency/style; feedback that actually helps.</li>
+          </ul>
+        </div>
+
+        <div class="role">
+          <h3>Community Advisor · Colby College</h3>
+          <p class="muted">Aug 2023 – Present</p>
+          <ul>
+            <li>Supported 200+ students; programming with RCLD across academic/cultural/creative lanes.</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <!-- projects -->
+    <section class="panel" id="projects" aria-label="Projects">
+      <div class="skills-inner" style="max-width:1200px;margin:0 auto;">
+        <h2>Projects</h2>
+
+        <div class="project">
+          <h3>Parking Occupancy CV Pipeline</h3>
+          <p class="muted">ViTDet · YOLOv8 · DETR · AWS</p>
+          <ul>
+            <li>Dataset build (collection → COCO) + training/eval with augments.</li>
+            <li>Confidence &gt;90% on top-downs; robust &gt;80% under occlusion.</li>
+          </ul>
+        </div>
+
+        <div class="project">
+          <h3>Auto-Translate Service</h3>
+          <p class="muted">Python · Flask · OpenAI API · JS</p>
+          <ul>
+            <li>Prompted LLM translation with review loop + logging/metrics.</li>
+            <li>+15% accuracy, −20% time.</li>
+          </ul>
+        </div>
+
+        <div class="project">
+          <h3>Hackathon Work</h3>
+          <p class="muted">Iteris · VoiceXD (Prize Winner)</p>
+          <ul>
+            <li>Iteris: Python analysis/viz of connected-vehicle data → safety hotspots + behavior insights.</li>
+            <li>VoiceXD: Colby assistants prototype with practical campus flows.</li>
+          </ul>
+        </div>
+
+        <div class="project">
+          <h3>CodePath SWE</h3>
+          <p class="muted">Python · DS/Algos · Git/GitHub</p>
+          <ul>
+            <li>Control flow, core DS, Big-O; disciplined Git habits.</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <!-- skills -->
+    <section class="panel skills" id="skills" aria-label="Skills">
+      <div class="skills-inner">
+        <h2>Skills</h2>
+
+        <div>
+          <h4>Programming & Tools</h4>
+          <p>Python, Java, JavaScript, R · NumPy, pandas · Matplotlib/Seaborn · Flask · Jupyter/Colab · VS Code · Excel · AWS</p>
+        </div>
+
+        <div>
+          <h4>AI & Data</h4>
+          <p>PyTorch, TensorFlow · ML/NLP/GenAI · Neural Nets · CV (YOLOv8, DETR, ViTDet) · Model opt · Data viz · OpenAI API</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- education -->
+    <section class="panel" id="education" aria-label="Education">
+      <div class="skills-inner" style="max-width:1200px;margin:0 auto;">
+        <h2>Education</h2>
+        <p><strong>Colby College</strong> — B.S. Computer Science (AI) + Statistics Minor · <span class="muted">Expected May 2026</span></p>
+      </div>
+    </section>
+
+    <!-- contact -->
+    <section class="panel" id="contact" aria-label="Contact">
+      <div class="skills-inner" style="max-width:1200px;margin:0 auto;">
+        <h2>Contact</h2>
+        <p>Based in Portsmouth, RI 02871</p>
+        <p>
+          <a href="mailto:jlwang26@colby.edu">jlwang26@colby.edu</a> ·
+          <a href="https://www.linkedin.com/in/jordan-wang-04b5b1256" target="_blank" rel="noopener">LinkedIn</a>
+        </p>
+>>>>>>> 1a8ef75 (Addition of changes made to all files since progress wasn't being recorded for the past few days)
+      </div>
+    </section>
+  </main>
+
+<<<<<<< HEAD
+  <!-- the JS that this page needs -->
+=======
+  <!-- js -->
+>>>>>>> 1a8ef75 (Addition of changes made to all files since progress wasn't being recorded for the past few days)
+  <script src="assets/js/portfolio.js" defer></script>
+</body>
+</html>

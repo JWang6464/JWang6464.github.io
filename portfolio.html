@@ -19,7 +19,6 @@
   <meta name="theme-color" content="#2e4b40" media="(prefers-color-scheme: dark)">
 </head>
 
-<!-- shards in hero; fade to global bg for the rest -->
 <body class="theme-sage rest-bg-off">
   <nav class="topnav" aria-label="Primary">
     <a href="#hero">Home</a>
@@ -27,7 +26,6 @@
     <a href="#work">Work</a>
     <a href="#projects">Projects</a>
     <a href="#skills">Skills</a>
-    <a href="#education">Education</a>
     <a href="#contact">Contact</a>
   </nav>
 
@@ -44,134 +42,217 @@
     </section>
 
     <!-- about -->
-    <section class="panel bio" id="about" aria-label="About">
+    <section class="panel bio wrap-mode" id="about" aria-label="About">
       <div class="bio-inner">
-        <div class="bio-copy">
-          <h2>About</h2>
-          <p>I build AI features and infra from idea → shipped impact: clean data flows, fast inference paths, and measurable UX. Small enough to move, big enough to matter.</p>
-          <p>Focused on vision workflows, model optimization, and durable GenAI surfaces. Also: music, hoops, and weird UI tinkering.</p>
+        <!-- left -->
+        <div class="bio-copy reveal" id="aboutCopy">
+          <h2 class="bio-title">About Me</h2>
+          <p class="lede" id="lede">
+            Hi, I'm Jordan. I'm currently a senior at Colby College studying Computer Science & AI!
+            I am especially interested in AI and the multidisciplinary applications of machine learning.
+            In my free time, I love to play/watch basketball, listen to music, spend time with my dog, and
+            play video games. Feel free to reach out to connect via email or LinkedIn!!
+          </p>
+
+          <nav class="socials" aria-label="Social links">
+            <a href="https://github.com/JWang6464" target="_blank" rel="noopener" aria-label="GitHub">
+              <svg width="28" height="28" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 .5a12 12 0 0 0-3.79 23.4c.6.11.82-.26.82-.58v-2.03c-3.34.73-4.04-1.6-4.04-1.6-.55-1.39-1.34-1.76-1.34-1.76-1.09-.74.08-.73.08-.73 1.2.08 1.83 1.24 1.83 1.24 1.07 1.83 2.82 1.3 3.51.99.11-.78.42-1.3.76-1.6-2.67-.3-5.47-1.34-5.47-5.94 0-1.31.47-2.37 1.24-3.21-.12-.3-.54-1.52.12-3.17 0 0 1.01-.32 3.3 1.23a11.4 11.4 0 0 1 6 0c2.28-1.55 3.3-1.23 3.3-1.23.66 1.65.24 2.87.12 3.17.77.84 1.24 1.9 1.24 3.21 0 4.61-2.8 5.64-5.47 5.94.43.38.82 1.12.82 2.26v3.35c0 .32.21.7.83.58A12 12 0 0 0 12 .5Z"/></svg>
+            </a>
+            <a href="https://www.linkedin.com/in/jordan-wang-04b5b1256" target="_blank" rel="noopener" aria-label="LinkedIn">
+              <svg width="28" height="28" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M20.45 20.45h-3.55v-5.59c0-1.33-.02-3.03-1.85-3.03-1.86 0-2.14 1.45-2.14 2.94v5.68H9.36V9h3.41v1.56h.05c.47-.9 1.62-1.85 3.33-1.85 3.56 0 4.22 2.34 4.22 5.39v6.35ZM5.34 7.44A2.06 2.06 0 1 1 5.34 3.3a2.06 2.06 0 0 1 0 4.14ZM7.12 20.45H3.55V9h3.57v11.45Z"/></svg>
+            </a>
+            <a href="assets/documents/resume.pdf" target="_blank" rel="noopener" aria-label="Resume">
+              <svg width="28" height="28" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8l-6-6Zm1 7V3.5L18.5 9H15ZM8 13h8v2H8v-2Zm0 4h8v2H8v-2Zm0-8h6v2H8V9Z"/></svg>
+            </a>
+          </nav>
         </div>
-        <figure class="ball-wrap" aria-label="Basketball">
-          <img class="basketball" src="assets/images/basketball.svg" alt="" width="420" height="420" loading="lazy" decoding="async">
+
+        <!-- right -->
+        <figure class="bio-media">
+          <div class="ball-wrap" id="ballWrap">
+            <img class="basketball" src="assets/images/basketball.svg" alt="" width="420" height="420" loading="lazy" decoding="async" />
+          </div>
+          <img class="portrait reveal" src="assets/images/portrait.jpg" alt="Portrait of Jordan Wang" width="520" height="640" loading="lazy" decoding="async" />
         </figure>
       </div>
     </section>
 
-    <!-- work -->
-    <section class="panel" id="work" aria-label="Work">
-      <div class="skills-inner" style="max-width:1200px;margin:0 auto;">
-        <h2>Work</h2>
+    <!-- work (Milestone Band) -->
+    <section class="panel work" id="work" aria-label="Work">
+      <div class="band">
+        <div class="rail" aria-hidden="true"></div>
 
-        <div class="role">
-          <h3>Software & AI Integration Intern · PinPark Inc.</h3>
-          <p class="muted">May 2025 – Present</p>
-          <ul>
-            <li>Built large-scale parking lot datasets (YouTube/EarthCam/Kaggle/web): frame extraction, filtering, COCO.</li>
-            <li>Trained/fine-tuned ViTDet, YOLOv8, DETR on AWS; curation + augments to squash misclassifications.</li>
-            <li>&gt;90% confidence on clear top-downs; &gt;80% with occlusion → reliable occupancy readouts.</li>
-          </ul>
-        </div>
+        <ol class="milestones">
+          <li class="ms">
+            <span class="ms-dot" aria-hidden="true"></span>
+            <article class="ms-card">
+              <h3>Software &amp; AI Integration Intern · PinPark Inc.</h3>
+              <p class="muted">May 2025 – Present</p>
+              <ul>
+                <li>Built large-scale parking lot datasets; COCO, augments.</li>
+                <li>ViTDet / YOLOv8 / DETR on AWS; robust occupancy readouts.</li>
+              </ul>
+            </article>
+          </li>
 
-        <div class="role">
-          <h3>Generative AI Extern · Cognizant</h3>
-          <p class="muted">May 2025 – Jun 2025</p>
-          <ul>
-            <li>Python for AI/ML, prompt design, LLM API integration; shipped small end-to-end demos.</li>
-            <li>Consulting reps: scope → trade-offs → crisp readouts.</li>
-          </ul>
-        </div>
+          <li class="ms">
+            <span class="ms-dot" aria-hidden="true"></span>
+            <article class="ms-card">
+              <h3>Generative AI Extern · Cognizant</h3>
+              <p class="muted">May 2025 – Jun 2025</p>
+              <ul>
+                <li>LLM API integration, demos end-to-end.</li>
+                <li>Consulting readouts: scope → trade-offs → metrics.</li>
+              </ul>
+            </article>
+          </li>
 
-        <div class="role">
-          <h3>AI Engineer Intern · Ubongo</h3>
-          <p class="muted">Jun 2024 – Sep 2024</p>
-          <ul>
-            <li>Automated translation tool (Python, OpenAI API, Flask, JS) with live review loop.</li>
-            <li>+15% accuracy, −20% processing time; cultural QA with native speakers.</li>
-          </ul>
-        </div>
+          <li class="ms">
+            <span class="ms-dot" aria-hidden="true"></span>
+            <article class="ms-card">
+              <h3>AI Engineer Intern · Ubongo</h3>
+              <p class="muted">Jun 2024 – Sep 2024</p>
+              <ul>
+                <li>Auto-translation tool (Python/Flask/JS) with review loop.</li>
+                <li>+15% accuracy, −20% processing time.</li>
+              </ul>
+            </article>
+          </li>
 
-        <div class="role">
-          <h3>Computer Science Project Grader · Colby College</h3>
-          <p class="muted">Feb 2025 – Present</p>
-          <ul>
-            <li>Graded for correctness/efficiency/style; feedback that actually helps.</li>
-          </ul>
-        </div>
+          <li class="ms">
+            <span class="ms-dot" aria-hidden="true"></span>
+            <article class="ms-card">
+              <h3>Project Grader · Colby College</h3>
+              <p class="muted">Feb 2025 – Present</p>
+              <ul><li>Correctness, efficiency, and clear feedback.</li></ul>
+            </article>
+          </li>
 
-        <div class="role">
-          <h3>Community Advisor · Colby College</h3>
-          <p class="muted">Aug 2023 – Present</p>
-          <ul>
-            <li>Supported 200+ students; programming with RCLD across academic/cultural/creative lanes.</li>
-          </ul>
-        </div>
+          <li class="ms">
+            <span class="ms-dot" aria-hidden="true"></span>
+            <article class="ms-card">
+              <h3>Community Advisor · Colby College</h3>
+              <p class="muted">Aug 2023 – Present</p>
+              <ul><li>Supported 200+ students; campus programming.</li></ul>
+            </article>
+          </li>
+        </ol>
       </div>
     </section>
 
     <!-- projects -->
-    <section class="panel" id="projects" aria-label="Projects">
-      <div class="skills-inner" style="max-width:1200px;margin:0 auto;">
-        <h2>Projects</h2>
+    <section class="panel projects" id="projects" aria-label="Projects">
+      <div class="proj-wrap">
+        <h2 class="proj-title">Projects</h2>
 
-        <div class="project">
-          <h3>Parking Occupancy CV Pipeline</h3>
-          <p class="muted">ViTDet · YOLOv8 · DETR · AWS</p>
-          <ul>
-            <li>Dataset build (collection → COCO) + training/eval with augments.</li>
-            <li>Confidence &gt;90% on top-downs; robust &gt;80% under occlusion.</li>
-          </ul>
+        <div class="proj-track" id="projTrack" aria-live="polite">
+          <article class="proj-card">
+            <h3>Parking Occupancy CV Pipeline</h3>
+            <p class="muted">ViTDet · YOLOv8 · DETR · AWS</p>
+            <ul>
+              <li>Dataset build (collection → COCO) + training/eval with augments.</li>
+              <li>Confidence &gt;90% on top-downs; robust &gt;80% under occlusion.</li>
+            </ul>
+          </article>
+
+          <article class="proj-card">
+            <h3>Auto-Translate Service</h3>
+            <p class="muted">Python · Flask · OpenAI API · JS</p>
+            <ul>
+              <li>Prompted LLM translation with review loop + logging/metrics.</li>
+              <li>+15% accuracy, −20% time.</li>
+            </ul>
+          </article>
+
+          <article class="proj-card">
+            <h3>Hackathon Work</h3>
+            <p class="muted">Iteris · VoiceXD (Prize Winner)</p>
+            <ul>
+              <li>Iteris: connected-vehicle data → safety hotspots + insights.</li>
+              <li>VoiceXD: Colby assistants prototype with practical campus flows.</li>
+            </ul>
+          </article>
+
+          <article class="proj-card">
+            <h3>CodePath SWE</h3>
+            <p class="muted">Python · DS/Algos · Git/GitHub</p>
+            <ul>
+              <li>Control flow, core DS, Big-O; disciplined Git habits.</li>
+            </ul>
+          </article>
         </div>
 
-        <div class="project">
-          <h3>Auto-Translate Service</h3>
-          <p class="muted">Python · Flask · OpenAI API · JS</p>
-          <ul>
-            <li>Prompted LLM translation with review loop + logging/metrics.</li>
-            <li>+15% accuracy, −20% time.</li>
-          </ul>
-        </div>
-
-        <div class="project">
-          <h3>Hackathon Work</h3>
-          <p class="muted">Iteris · VoiceXD (Prize Winner)</p>
-          <ul>
-            <li>Iteris: Python analysis/viz of connected-vehicle data → safety hotspots + behavior insights.</li>
-            <li>VoiceXD: Colby assistants prototype with practical campus flows.</li>
-          </ul>
-        </div>
-
-        <div class="project">
-          <h3>CodePath SWE</h3>
-          <p class="muted">Python · DS/Algos · Git/GitHub</p>
-          <ul>
-            <li>Control flow, core DS, Big-O; disciplined Git habits.</li>
-          </ul>
+        <div class="proj-nav" aria-hidden="false">
+          <button class="proj-btn prev" id="projPrev" aria-label="Previous">‹</button>
+          <button class="proj-btn next" id="projNext" aria-label="Next">›</button>
         </div>
       </div>
     </section>
 
     <!-- skills -->
-    <section class="panel skills" id="skills" aria-label="Skills">
-      <div class="skills-inner">
-        <h2>Skills</h2>
+    <section class="panel stack" id="skills" aria-label="Skills">
+      <div class="stack-wrap">
+        <h2 class="stack-title">My Stack</h2>
 
-        <div>
-          <h4>Programming & Tools</h4>
-          <p>Python, Java, JavaScript, R · NumPy, pandas · Matplotlib/Seaborn · Flask · Jupyter/Colab · VS Code · Excel · AWS</p>
+        <div class="stack-grid">
+          <!-- left column: labels -->
+          <div class="stack-labels">
+            <p>Frontend</p>
+            <p>Backend</p>
+            <p>Database</p>
+            <p>Tools</p>
+          </div>
+
+          <!-- right column: groups -->
+          <div class="stack-groups">
+            <!-- Frontend -->
+            <div class="tags" aria-label="Frontend">
+              <span class="tag"><span class="ico">🟦</span>TypeScript</span>
+              <span class="tag"><span class="ico">🟨</span>JavaScript</span>
+              <span class="tag">JSON</span>
+              <span class="tag"><span class="ico">⚛️</span>React</span>
+              <span class="tag">Next.js</span>
+              <span class="tag">Tailwind CSS</span>
+              <span class="tag">Material UI</span>
+              <span class="tag">Markdown</span>
+              <span class="tag">GSAP</span>
+              <span class="tag">Framer Motion</span>
+              <span class="tag">Chakra UI</span>
+              <span class="tag">HTML5</span>
+              <span class="tag">CSS3</span>
+            </div>
+
+            <!-- Backend -->
+            <div class="tags" aria-label="Backend">
+              <span class="tag">Python</span>
+              <span class="tag">Java</span>
+              <span class="tag">Node.js</span>
+              <span class="tag">Express</span>
+              <span class="tag">Webpack</span>
+            </div>
+
+            <!-- Database -->
+            <div class="tags" aria-label="Database">
+              <span class="tag">PostgreSQL</span>
+              <span class="tag">Firebase</span>
+              <span class="tag">Postman</span>
+            </div>
+
+            <!-- Tools -->
+            <div class="tags" aria-label="Tools">
+              <span class="tag">Git</span>
+              <span class="tag">Docker</span>
+              <span class="tag">Azure</span>
+              <span class="tag">Vercel</span>
+              <span class="tag">GitHub</span>
+              <span class="tag">Bash</span>
+              <span class="tag">Claude</span>
+              <span class="tag">Colab</span>
+              <span class="tag">Jest</span>
+              <span class="tag">Zapier</span>
+            </div>
+          </div>
         </div>
-
-        <div>
-          <h4>AI & Data</h4>
-          <p>PyTorch, TensorFlow · ML/NLP/GenAI · Neural Nets · CV (YOLOv8, DETR, ViTDet) · Model opt · Data viz · OpenAI API</p>
-        </div>
-      </div>
-    </section>
-
-    <!-- education -->
-    <section class="panel" id="education" aria-label="Education">
-      <div class="skills-inner" style="max-width:1200px;margin:0 auto;">
-        <h2>Education</h2>
-        <p><strong>Colby College</strong> — B.S. Computer Science (AI) + Statistics Minor · <span class="muted">Expected May 2026</span></p>
       </div>
     </section>
 
@@ -184,16 +265,10 @@
           <a href="mailto:jlwang26@colby.edu">jlwang26@colby.edu</a> ·
           <a href="https://www.linkedin.com/in/jordan-wang-04b5b1256" target="_blank" rel="noopener">LinkedIn</a>
         </p>
->>>>>>> 1a8ef75 (Addition of changes made to all files since progress wasn't being recorded for the past few days)
       </div>
     </section>
   </main>
 
-<<<<<<< HEAD
-  <!-- the JS that this page needs -->
-=======
-  <!-- js -->
->>>>>>> 1a8ef75 (Addition of changes made to all files since progress wasn't being recorded for the past few days)
   <script src="assets/js/portfolio.js" defer></script>
 </body>
 </html>

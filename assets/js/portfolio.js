@@ -1,4 +1,4 @@
-// spin + scroll glue
+/* spin + scroll glue */
 (() => {
   const reduce = matchMedia?.("(prefers-reduced-motion: reduce)")?.matches;
   const hero = document.getElementById("hero");
@@ -53,27 +53,15 @@
   }
 })();
 
-
-// shards everywhere (fixed bg)
+/* shards bg */
 (() => {
   let cvs = document.getElementById("crystalsFx");
-  if (!cvs) {
-    cvs = document.createElement("canvas");
-    cvs.id = "crystalsFx";
-    document.body.prepend(cvs);
-  } else if (cvs.parentElement !== document.body) {
-    document.body.prepend(cvs);
-  }
+  if (!cvs) { cvs = document.createElement("canvas"); cvs.id = "crystalsFx"; }
+  cvs.classList.add("bgfx");
+  if (cvs.parentElement !== document.body) document.body.prepend(cvs);
+  Object.assign(cvs.style,{position:"fixed",inset:"0",zIndex:"-1",display:"block",pointerEvents:"none"});
 
-  Object.assign(cvs.style, {
-    position: "fixed",
-    inset: "0",
-    zIndex: "0",
-    display: "block",
-    pointerEvents: "none"
-  });
-
-  const ctx = cvs.getContext("2d", { alpha: true });
+  const ctx = cvs.getContext("2d",{alpha:true});
 
   let w=0,h=0,dpr=1,t=0;
   let mx=-1,my=-1, pmx=-1,pmy=-1, mvx=0,mvy=0, lastMoveT=performance.now();
@@ -91,8 +79,8 @@
     }
     for(let i=0;i<verts.length;i++){
       const p=verts[i], n=verts[(i+1)%verts.length], b=verts[(i-1+verts.length)%verts.length];
-      const vx=n[0]-b[0], vy=n[1]-b[1], l=len(vx,vy), nx=vx/l, ny=vy/l;
-      p[0]+=(-ny)*1.2; p[1]+=(nx)*1.2;
+      const vx=b[0]-n[0], vy=b[1]-n[1], l=len(vx,vy), nx=-vy/l, ny=vx/l;
+      p[0]+=nx*1.2; p[1]+=ny*1.2;
     }
     return { x:rand(0,w), y:rand(0,h), vx:rand(-0.3,0.3), vy:rand(-0.3,0.3), rot:rand(0,Math.PI*2), rv:rand(-0.005,0.005), size, hue:rand(0.35,0.8), verts, mass:size*0.3 };
   }
@@ -101,9 +89,9 @@
     dpr=Math.min(2, devicePixelRatio||1);
     w=innerWidth|0; h=innerHeight|0;
     cvs.width=w*dpr; cvs.height=h*dpr;
-    cvs.style.width = "100vw";
-    cvs.style.height = "100vh";
+    cvs.style.width="100vw"; cvs.style.height="100vh";
     ctx.setTransform(dpr,0,0,dpr,0,0);
+
     shards.length=0;
     const count=Math.floor((w*h)/32000);
     for(let i=0;i<count;i++) shards.push(makeShard());
@@ -114,13 +102,13 @@
   function collideMouse(s){
     if(mx<0) return;
     const dx=s.x-mx, dy=s.y-my, dist=Math.hypot(dx,dy), hitR=RADIUS+s.size*0.42;
-    if(dist < hitR){
-      const nx=dx/(dist||1), ny=dy/(dist||1), relvx=s.vx - mvx*12, relvy=s.vy - mvy*12, vn = relvx*nx + relvy*ny;
+    if(dist<hitR){
+      const nx=dx/(dist||1), ny=dy/(dist||1), relvx=s.vx-mvx*12, relvy=s.vy-mvy*12, vn=relvx*nx+relvy*ny;
       if(vn<0){
         const j=-(1+REST)*vn/(1/s.mass); applyImpulse(s,nx*j,ny*j);
-        const tx=-ny, ty=nx, vt=relvx*tx + relvy*ty, jt=-FRICTION*vt/(1/s.mass); applyImpulse(s,tx*jt,ty*jt);
+        const tx=-ny, ty=nx, vt=relvx*tx+relvy*ty, jt=-FRICTION*vt/(1/s.mass); applyImpulse(s,tx*jt,ty*jt);
       }
-      const pen=(hitR - dist); s.x+=nx*pen*0.22; s.y+=ny*pen*0.22;
+      const pen=(hitR-dist); s.x+=nx*pen*0.22; s.y+=ny*pen*0.22;
     }
   }
 
@@ -199,7 +187,8 @@
   function frame(now){
     const dt=Math.min(40, now - t || 16)/1000; t=now;
     ctx.clearRect(0,0,w,h);
-    ctx.fillStyle="rgba(240,247,243,0.42)"; ctx.fillRect(0,0,w,h);
+    ctx.fillStyle="rgba(240,247,243,0.42)";
+    ctx.fillRect(0,0,w,h);
     update(dt);
     for(const p of pulses) drawPulse(p);
     shards.sort((a,b)=>a.y-b.y);
@@ -207,7 +196,6 @@
     requestAnimationFrame(frame);
   }
 
-  // window-level so it works everywhere
   addEventListener("pointermove",(e)=>{ mx=e.clientX; my=e.clientY; },{passive:true});
   addEventListener("pointerleave",()=>{ pmx=mx=-1; pmy=my=-1; });
   addEventListener("pointerdown",(e)=>{ pulses.push({x:e.clientX,y:e.clientY,r:10,a:1}); });
@@ -215,36 +203,52 @@
   addEventListener("resize", resize);
   resize();
   requestAnimationFrame(frame);
+
+  requestAnimationFrame(() => {
+    document.body.classList.remove("rest-bg-off");
+    document.body.classList.add("rest-bg-on");
+  });
 })();
 
-
-// theme flip + enters + tiny bg drift
+/* theme flip + reveals + tiny bg drift */
 (() => {
   const reduce = matchMedia?.("(prefers-reduced-motion: reduce)")?.matches;
   const body = document.body;
   const about = document.getElementById("about");
-  const copy = about?.querySelector(".bio-copy");
-  const ballWrap = about?.querySelector(".ball-wrap");
-  if (!about || !copy || !ballWrap) return;
+  if (!about) return;
 
-  const seen = { copy:false, ball:false };
-  const io = new IntersectionObserver((ents)=>{
+  const copy     = about.querySelector(".bio-copy");
+  const ballWrap = about.querySelector(".ball-wrap");
+  const portrait = about.querySelector(".portrait");
+  copy?.classList.add("reveal");
+  ballWrap?.classList.add("reveal");
+  portrait?.classList.add("reveal");
+
+  const sectionIO = new IntersectionObserver((ents)=>{
     for (const e of ents){
       if (e.target === about){
         if (e.isIntersecting) body.classList.add("theme-cream");
         else body.classList.remove("theme-cream");
       }
-      if (e.target === copy && e.isIntersecting && !seen.copy){ copy.classList.add("enter"); seen.copy=true; }
-      if (e.target === ballWrap && e.isIntersecting && !seen.ball){ ballWrap.classList.add("enter"); seen.ball=true; }
     }
   }, { threshold: 0.15 });
+  sectionIO.observe(about);
 
-  io.observe(about); io.observe(copy); io.observe(ballWrap);
-
+  const reveals = document.querySelectorAll(".reveal");
   if (reduce){
-    body.classList.add("theme-cream");
-    copy.classList.add("enter");
-    ballWrap.classList.add("enter");
+    reveals.forEach(el => el.classList.add("in"));
+  }else{
+    const revealIO = new IntersectionObserver((ents)=>{
+      for (const e of ents){
+        if (e.isIntersecting){
+          e.target.classList.remove("in");
+          requestAnimationFrame(()=>requestAnimationFrame(()=>e.target.classList.add("in")));
+        }else{
+          e.target.classList.remove("in");
+        }
+      }
+    }, { threshold: 0.15, rootMargin: "0px 0px -10% 0px" });
+    reveals.forEach(el => revealIO.observe(el));
   }
 
   addEventListener("pointermove",(e)=>{
@@ -252,4 +256,83 @@
     body.style.setProperty("--bgx", x+"px");
     body.style.setProperty("--bgy", y+"px");
   }, {passive:true});
+})();
+
+/* work: milestone band */
+(() => {
+  const band = document.querySelector("#work .band");
+  const list = document.querySelector("#work .milestones");
+  if (!band || !list) return;
+
+  const updateProgress = () => {
+    const r = band.getBoundingClientRect();
+    const vh = innerHeight || 1;
+    const p = Math.max(0, Math.min(1, (vh - r.top) / (r.height + vh*0.25)));
+    band.style.setProperty("--railP", p.toFixed(4));
+  };
+
+  const io = new IntersectionObserver((entries)=>{
+    for (const e of entries){
+      if (e.isIntersecting) e.target.classList.add("in");
+      else e.target.classList.remove("in");
+    }
+  }, { rootMargin: "0px 0px -10% 0px", threshold: 0.1 });
+  list.querySelectorAll(".ms").forEach(ms => io.observe(ms));
+
+  updateProgress();
+  addEventListener("scroll", updateProgress, { passive: true });
+  addEventListener("resize", updateProgress);
+})();
+
+
+/* projects slider */
+(() => {
+  const track = document.getElementById('projTrack');
+  const prev  = document.getElementById('projPrev');
+  const next  = document.getElementById('projNext');
+  if(!track || !prev || !next) return;
+
+  const cardW = () => track.querySelector('.proj-card')?.getBoundingClientRect().width || 360;
+  const gap   = () => parseFloat(getComputedStyle(track).columnGap || getComputedStyle(track).gap) || 24;
+  const step  = () => cardW() + gap();
+
+  const clamp = (v,min,max)=>Math.max(min,Math.min(max,v));
+  const updateBtns = () => {
+    const max = track.scrollWidth - track.clientWidth - 1;
+    prev.disabled = track.scrollLeft <= 1;
+    next.disabled = track.scrollLeft >= max;
+  };
+
+  const go = dir => {
+    const target = clamp(track.scrollLeft + (dir * step()), 0, track.scrollWidth);
+    track.scrollTo({ left: target, behavior: 'smooth' });
+  };
+
+  prev.addEventListener('click', () => go(-1));
+  next.addEventListener('click', () => go(+1));
+  track.addEventListener('scroll', updateBtns, { passive:true });
+  addEventListener('resize', updateBtns);
+
+  // drag to scroll
+  let sx=0, sl=0, drag=false;
+  const start = e => { drag=true; sx=(e.touches?e.touches[0].clientX:e.clientX); sl=track.scrollLeft; track.classList.add('drag'); };
+  const move  = e => { if(!drag) return; const x=(e.touches?e.touches[0].clientX:e.clientX); track.scrollLeft = sl + (sx - x); };
+  const end   = () => { drag=false; track.classList.remove('drag'); };
+
+  track.addEventListener('pointerdown', start);
+  track.addEventListener('pointermove', move);
+  addEventListener('pointerup', end);
+  track.addEventListener('touchstart', start, {passive:true});
+  track.addEventListener('touchmove',  move,  {passive:false});
+  track.addEventListener('touchend',   end);
+
+  // keyboard
+  track.setAttribute('tabindex','0');
+  track.addEventListener('keydown',(e)=>{
+    if(e.key==='ArrowRight'){ e.preventDefault(); go(+1); }
+    if(e.key==='ArrowLeft'){  e.preventDefault(); go(-1); }
+  });
+
+  // init
+  requestAnimationFrame(updateBtns);
 })();

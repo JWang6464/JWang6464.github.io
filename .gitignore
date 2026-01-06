@@ -1,0 +1,4 @@
+
+# # ignore large media
+# *.mov
+# assets/videos/

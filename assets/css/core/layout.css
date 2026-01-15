@@ -1,0 +1,14 @@
+.panel{
+  position:relative;
+  min-height:100svh;
+  display:grid;
+  align-items:center;
+  padding:clamp(18px,3vw,28px);
+  scroll-margin-top:var(--nav-h);
+}
+
+.container{
+  max-width:1200px;
+  margin:0 auto;
+  width:min(96vw,1200px);
+}

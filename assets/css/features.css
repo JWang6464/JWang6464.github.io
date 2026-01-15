@@ -1,0 +1,15 @@
+.type-target{font-weight:700}
+
+.type-caret{
+  display:inline-block;
+  width:10px;
+  margin-left:4px;
+  border-right:2px solid currentColor;
+  transform:translateY(2px);
+  animation:caretBlink 1s steps(2, end) infinite;
+}
+
+@keyframes caretBlink{50%{opacity:0}}
+
+/* if want canvas off on portfolio */
+.bgfx{display:none !important;}

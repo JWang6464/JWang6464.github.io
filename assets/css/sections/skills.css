@@ -1,0 +1,72 @@
+section#skills.stack .stack{padding-block:clamp(40px,6vw,80px)}
+
+section#skills.stack .stack-wrap{
+  position:relative;
+  max-width:1200px;
+  width:min(96vw,1200px);
+  margin:0 auto;
+  color:var(--sage-10);
+  background:
+    radial-gradient(1100px 720px at 18% -8%, var(--forest-900), var(--forest-880)),
+    linear-gradient(180deg, rgba(255,255,255,.02), rgba(255,255,255,0));
+  border:1px solid rgba(95,143,124,.24);
+  border-radius:24px;
+  padding:clamp(20px,4vw,36px);
+  box-shadow:0 24px 80px rgba(0,0,0,.25);
+  overflow:hidden;
+}
+
+section#skills.stack .stack-title{
+  font-size:clamp(1.8rem,4vw,3rem);
+  font-weight:800;
+  color:#f4fbf8;
+  margin-bottom:clamp(14px,2vw,20px);
+}
+
+section#skills.stack .stack-grid{
+  display:grid;
+  grid-template-columns:200px 1fr;
+  gap:clamp(12px,3vw,24px);
+  align-items:start;
+}
+
+section#skills.stack .stack-labels p{
+  color:#c8d6d0;
+  font-weight:700;
+  letter-spacing:.25px;
+  margin:clamp(10px,1.8vw,16px) 0;
+}
+
+section#skills.stack .stack-groups{display:grid; gap:clamp(8px,1.4vw,14px)}
+section#skills.stack .tags{display:flex; flex-wrap:wrap; gap:12px}
+
+section#skills.stack .tag{
+  display:inline-flex; align-items:center; gap:8px;
+  padding:8px 14px;
+  border-radius:9999px;
+  background:var(--chip-bg);
+  border:1px solid var(--chip-brd);
+  color:var(--chip-fg);
+  backdrop-filter:blur(8px);
+  box-shadow:0 6px 18px rgba(95,143,124,.22) inset, 0 6px 18px rgba(0,0,0,.14);
+  font-weight:600;
+  font-size:.98rem;
+  line-height:1;
+  white-space:nowrap;
+  transition:transform .12s ease, background .15s ease, box-shadow .2s ease;
+}
+
+section#skills.stack .tag:hover{
+  transform:translateY(-2px);
+  background:rgba(239,248,243,.12);
+  box-shadow:0 10px 28px rgba(95,143,124,.28) inset, 0 10px 28px rgba(0,0,0,.22);
+}
+
+section#skills.stack .tag .ico{font-size:1rem; line-height:1}
+
+@media (max-width:920px){
+  section#skills.stack .stack-grid{grid-template-columns:1fr}
+  section#skills.stack .stack-labels{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:6px}
+  section#skills.stack .stack-labels p{margin:0}
+  section#skills.stack .stack-groups{margin-top:8px}
+}

@@ -1,0 +1,57 @@
+#about{
+  min-height:120svh;
+  padding-top:clamp(60px,10vh,140px);
+  padding-bottom:clamp(60px,12vh,160px);
+}
+
+.bio .bio-inner{
+  display:grid; grid-template-columns:1.2fr .8fr;
+  gap:var(--gap);
+  align-items:start;
+  max-width:1200px;
+  margin:0 auto;
+}
+
+.bio-copy{max-width:60ch; transform:translateY(var(--bio-y,24px)); opacity:var(--bio-op,0)}
+.bio-copy h2{font-size:clamp(1.4rem,3.2vw,2rem); margin-bottom:10px}
+.bio-copy p{color:var(--muted); line-height:1.6}
+
+.bio-title{
+  font-size:clamp(2.2rem,6vw,4rem);
+  font-weight:800;
+  letter-spacing:.2px;
+  margin-bottom:clamp(12px,1.6vw,16px);
+  color:var(--sage-700);
+}
+
+.lede{
+  font-size:clamp(1.05rem,2.2vw,1.5rem);
+  line-height:1.6;
+  color:rgba(0,0,0,.66);
+  max-width:70ch;
+}
+
+.bio-media{position:relative; justify-self:end; width:min(44vw,520px)}
+.ball-wrap{position:absolute; left:var(--ball-left); bottom:0; z-index:2}
+.basketball{width:min(var(--ball-min),var(--ball-max)); aspect-ratio:1; filter:drop-shadow(0 24px 60px rgba(0,0,0,.22))}
+
+.reveal{opacity:0; transform:translateY(14px) scale(.985); transition:opacity .55s ease,transform .55s ease}
+.reveal.in{opacity:1; transform:none}
+
+.socials{display:flex; gap:18px; margin-top:clamp(18px,2vw,26px)}
+.socials a{
+  color:rgba(0,0,0,.55);
+  display:inline-flex; align-items:center; justify-content:center;
+  width:40px; height:40px; border-radius:12px;
+  background:rgba(95,143,124,.08);
+  border:1px solid rgba(95,143,124,.18);
+  transition:transform .12s ease,background .15s ease,color .15s ease;
+}
+.socials a:hover{transform:translateY(-2px); background:rgba(95,143,124,.14); color:var(--sage-700)}
+
+@media (max-width:900px){
+  .bio .bio-inner{grid-template-columns:1fr; gap:clamp(18px,4vw,28px)}
+  .bio-media{justify-self:center; width:min(78vw,520px)}
+  .ball-wrap{position:relative; left:auto; bottom:auto; margin-top:16px; display:flex; justify-content:center}
+  .basketball{width:min(66vw,360px)}
+}

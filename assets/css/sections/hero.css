@@ -1,0 +1,27 @@
+.hero{position:relative; color:var(--sage-700)}
+.bgfx{position:fixed; inset:0; z-index:-1; pointer-events:none; display:block; contain:layout paint size}
+.bgfx.hide{opacity:0; transition:opacity .55s ease}
+
+.hero .hero-inner{
+  display:grid; grid-template-columns:1fr; justify-items:center; text-align:center;
+  gap:clamp(14px,2.2vw,24px);
+  padding:18vh 16px 22vh;
+  position:relative; z-index:1;
+}
+
+.name{
+  font-weight:800; color:var(--sage-700);
+  font-size:clamp(var(--hero-name-min),var(--hero-name-vw),var(--hero-name-max));
+  line-height:1.05;
+}
+
+.blurb{
+  color:#3a5248;
+  font-size:clamp(var(--hero-blurb-min),var(--hero-blurb-vw),var(--hero-blurb-max));
+}
+
+.id-block{
+  transform:translateY(var(--id-y,0)) scale(var(--id-scale,1));
+  opacity:var(--id-op,1);
+  transition:transform .45s ease,opacity .45s ease;
+}

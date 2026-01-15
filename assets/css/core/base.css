@@ -1,0 +1,15 @@
+*{box-sizing:border-box;margin:0;padding:0}
+
+html,body{height:100%}
+html{scroll-behavior:smooth}
+@media (prefers-reduced-motion:reduce){html{scroll-behavior:auto}}
+
+body{
+  font-family:Poppins,system-ui,sans-serif;
+  color:var(--fg);
+  background:var(--cream);
+  isolation:isolate;
+}
+
+img,video{display:block;max-width:100%;height:auto}
+.muted{color:var(--muted)}

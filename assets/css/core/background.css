@@ -1,0 +1,19 @@
+body::before{
+  content:""; position:fixed; inset:0; z-index:-3;
+  background:
+    linear-gradient(180deg, rgba(95,143,124,.04), rgba(95,143,124,.025) 40%, rgba(95,143,124,.02) 100%),
+    radial-gradient(140% 120% at calc(50% + var(--bgx)) calc(-20% + var(--bgy)), rgba(255,255,255,.85), rgba(255,255,255,.65) 50%, transparent 70%),
+    var(--cream);
+}
+
+body::after{
+  content:""; position:fixed; inset:0; z-index:-2; pointer-events:none; opacity:var(--sage-o);
+  background:
+    radial-gradient(1200px 560px at calc(50% + var(--bgx)) calc(-180px + var(--bgy)), rgba(95,143,124,.16), transparent 60%),
+    radial-gradient(900px 420px at calc(80% + var(--bgx)) calc(-120px + var(--bgy)), rgba(95,143,124,.10), transparent 55%),
+    linear-gradient(180deg, rgba(95,143,124,.08), rgba(95,143,124,.05) 40%, rgba(95,143,124,.03) 100%);
+}
+
+body.theme-cream{--sage-o:0}
+body.rest-bg-off::before,body.rest-bg-off::after{opacity:0}
+body.rest-bg-on::before,body.rest-bg-on::after{opacity:1;transition:opacity .5s ease}

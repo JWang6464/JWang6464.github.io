@@ -12,4 +12,4 @@
 @keyframes caretBlink{50%{opacity:0}}
 
 /* if want canvas off on portfolio */
-.bgfx{display:none !important;}
+/* body.no-shards .bgfx{display:none !important;} */

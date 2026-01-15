@@ -303,3 +303,25 @@ section#skills.stack .tag .ico{font-size:1rem;line-height:1}
   section#skills.stack .stack-labels p{margin:0}
   section#skills.stack .stack-groups{margin-top:8px}
 }
+
+.type-target {
+  font-weight: 700;
+}
+
+.type-caret {
+  display: inline-block;
+  width: 10px;
+  margin-left: 4px;
+  border-right: 2px solid currentColor;
+  transform: translateY(2px);
+  animation: caretBlink 1s steps(2, end) infinite;
+}
+
+@keyframes caretBlink {
+  50% { opacity: 0; }
+}
+
+/* turning off the hero canvas so the page feels cleaner */
+.bgfx {
+  display: none !important;
+}

@@ -7,66 +7,171 @@ section#skills.stack .stack-wrap{
   margin:0 auto;
   color:var(--sage-10);
   background:
-    radial-gradient(1100px 720px at 18% -8%, var(--forest-900), var(--forest-880)),
-    linear-gradient(180deg, rgba(255,255,255,.02), rgba(255,255,255,0));
-  border:1px solid rgba(95,143,124,.24);
-  border-radius:24px;
+    radial-gradient(900px 500px at 15% 0%, rgba(102,160,140,.22), rgba(102,160,140,0)),
+    linear-gradient(160deg, #102019 0%, #0c1714 48%, #111f1a 100%);
+  border:1px solid rgba(95,143,124,.26);
+  border-radius:28px;
   padding:clamp(20px,4vw,36px);
-  box-shadow:0 24px 80px rgba(0,0,0,.25);
+  box-shadow:0 24px 80px rgba(0,0,0,.24);
   overflow:hidden;
+}
+
+section#skills.stack .stack-header{
+  display:flex;
+  align-items:end;
+  justify-content:space-between;
+  gap:clamp(16px,3vw,28px);
+  margin-bottom:clamp(16px,2.6vw,28px);
+}
+
+section#skills.stack .stack-eyebrow{
+  margin-bottom:10px;
+  color:var(--sage-300);
+  font-size:.82rem;
+  font-weight:700;
+  letter-spacing:.18em;
+  text-transform:uppercase;
 }
 
 section#skills.stack .stack-title{
   font-size:clamp(1.8rem,4vw,3rem);
   font-weight:800;
   color:#f4fbf8;
-  margin-bottom:clamp(14px,2vw,20px);
+  line-height:1.05;
 }
 
-section#skills.stack .stack-grid{
+section#skills.stack .stack-summary{
+  max-width:42ch;
+  color:rgba(234,244,239,.78);
+  font-size:1rem;
+  line-height:1.7;
+}
+
+section#skills.stack .stack-window{
+  position:relative;
+  border-radius:26px;
+  padding:clamp(14px,2vw,18px);
+  background:rgba(255,255,255,.03);
+  border:1px solid rgba(201,222,212,.12);
+  box-shadow:inset 0 1px 0 rgba(255,255,255,.04);
+  overflow:hidden;
+}
+
+section#skills.stack .stack-window::before,
+section#skills.stack .stack-window::after{
+  content:"";
+  position:absolute;
+  top:0;
+  bottom:0;
+  width:72px;
+  pointer-events:none;
+  z-index:2;
+}
+
+section#skills.stack .stack-window::before{
+  left:0;
+  background:linear-gradient(90deg, rgba(11,20,17,.98), rgba(11,20,17,0));
+}
+
+section#skills.stack .stack-window::after{
+  right:0;
+  background:linear-gradient(270deg, rgba(11,20,17,.98), rgba(11,20,17,0));
+}
+
+section#skills.stack .stack-frame{
   display:grid;
-  grid-template-columns:200px 1fr;
-  gap:clamp(12px,3vw,24px);
-  align-items:start;
+  gap:14px;
 }
 
-section#skills.stack .stack-labels p{
-  color:#c8d6d0;
+section#skills.stack .stack-row{
+  display:grid;
+  grid-template-columns:190px 1fr;
+  align-items:center;
+  gap:14px;
+  overflow:hidden;
+}
+
+section#skills.stack .stack-row-label{
+  color:var(--sage-300);
+  font-size:.8rem;
+  font-weight:800;
+  letter-spacing:.16em;
+  text-transform:uppercase;
+  padding-left:8px;
+}
+
+section#skills.stack .stack-track{
+  display:flex;
+  width:max-content;
+  gap:14px;
+  will-change:transform;
+}
+
+section#skills.stack .row-a .stack-track{animation:skills-slide-left 28s linear infinite}
+section#skills.stack .row-b .stack-track{animation:skills-slide-right 34s linear infinite}
+section#skills.stack .row-c .stack-track{animation:skills-slide-left 31s linear infinite}
+
+section#skills.stack .stack-window:hover .stack-track{
+  animation-play-state:paused;
+}
+
+section#skills.stack .stack-item{
+  display:inline-flex;
+  align-items:center;
+  gap:10px;
+  padding:12px 16px;
+  border-radius:999px;
+  background:rgba(255,255,255,.06);
+  border:1px solid rgba(191,217,204,.18);
+  box-shadow:0 10px 24px rgba(0,0,0,.12);
+  color:#eef7f2;
   font-weight:700;
-  letter-spacing:.25px;
-  margin:clamp(10px,1.8vw,16px) 0;
-}
-
-section#skills.stack .stack-groups{display:grid; gap:clamp(8px,1.4vw,14px)}
-section#skills.stack .tags{display:flex; flex-wrap:wrap; gap:12px}
-
-section#skills.stack .tag{
-  display:inline-flex; align-items:center; gap:8px;
-  padding:8px 14px;
-  border-radius:9999px;
-  background:var(--chip-bg);
-  border:1px solid var(--chip-brd);
-  color:var(--chip-fg);
-  backdrop-filter:blur(8px);
-  box-shadow:0 6px 18px rgba(95,143,124,.22) inset, 0 6px 18px rgba(0,0,0,.14);
-  font-weight:600;
-  font-size:.98rem;
-  line-height:1;
   white-space:nowrap;
-  transition:transform .12s ease, background .15s ease, box-shadow .2s ease;
 }
 
-section#skills.stack .tag:hover{
-  transform:translateY(-2px);
-  background:rgba(239,248,243,.12);
-  box-shadow:0 10px 28px rgba(95,143,124,.28) inset, 0 10px 28px rgba(0,0,0,.22);
+section#skills.stack .stack-item span:last-child{letter-spacing:.01em}
+
+section#skills.stack .skill-icon{
+  display:inline-flex;
+  align-items:center;
+  justify-content:center;
+  min-width:34px;
+  height:34px;
+  padding:0 8px;
+  border-radius:22px;
+  font-size:.74rem;
+  line-height:1;
+  font-weight:800;
+  letter-spacing:.04em;
+  color:#08110d;
 }
 
-section#skills.stack .tag .ico{font-size:1rem; line-height:1}
+
+section#skills.stack .skill-icon-lang{background:linear-gradient(135deg,#dff4eb,#a8dcc8)}
+section#skills.stack .skill-icon-ai{background:linear-gradient(135deg,#f0e3ff,#c4b3ff)}
+section#skills.stack .skill-icon-fw{background:linear-gradient(135deg,#dbeeff,#a9d0ff)}
+
+@keyframes skills-slide-left{
+  from{transform:translateX(0)}
+  to{transform:translateX(-50%)}
+}
+
+@keyframes skills-slide-right{
+  from{transform:translateX(-50%)}
+  to{transform:translateX(0)}
+}
 
 @media (max-width:920px){
-  section#skills.stack .stack-grid{grid-template-columns:1fr}
-  section#skills.stack .stack-labels{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:6px}
-  section#skills.stack .stack-labels p{margin:0}
-  section#skills.stack .stack-groups{margin-top:8px}
+  section#skills.stack .stack-header{grid-template-columns:1fr; align-items:start; display:grid}
+  section#skills.stack .stack-summary{max-width:none}
+  section#skills.stack .stack-window{padding:12px}
+  section#skills.stack .stack-row{grid-template-columns:1fr; gap:8px}
+  section#skills.stack .stack-row-label{padding-left:4px}
+  section#skills.stack .stack-track{gap:10px}
+  section#skills.stack .stack-item{padding:11px 14px; font-size:.92rem}
+  section#skills.stack .skill-icon{min-width:30px; height:30px; font-size:.68rem}
+}
+
+@media (prefers-reduced-motion:reduce){
+  section#skills.stack .stack-track{animation:none}
 }

@@ -94,63 +94,145 @@
     <!-- work (Milestone Band) -->
     <section class="panel work" id="work" aria-label="Work">
       <div class="band">
-        <div class="rail" aria-hidden="true"></div>
+        <h2 class="work-title">Experience</h2>
 
-        <ol class="milestones">
-          <li class="ms">
-            <span class="ms-dot" aria-hidden="true"></span>
-            <article class="ms-card">
-              <h3>Software &amp; AI Integration Intern · PinPark Inc.</h3>
-              <p class="muted">May 2025 – Present</p>
-              <ul>
-                <li>Built large-scale parking lot datasets; COCO, augments.</li>
-                <li>ViTDet / YOLOv8 / DETR on AWS; robust occupancy readouts.</li>
-              </ul>
-            </article>
-          </li>
+        <div class="timeline-wrap" id="workTimeline">
+          <svg class="timeline-svg" viewBox="0 0 100 1000" preserveAspectRatio="none" aria-hidden="true">
+            <path id="timeline-path" class="timeline-path" d="M50 0 L50 1000"></path>
+          </svg>
 
-          <li class="ms">
-            <span class="ms-dot" aria-hidden="true"></span>
-            <article class="ms-card">
-              <h3>Generative AI Extern · Cognizant</h3>
-              <p class="muted">May 2025 – Jun 2025</p>
-              <ul>
-                <li>LLM API integration, demos end-to-end.</li>
-                <li>Consulting readouts: scope → trade-offs → metrics.</li>
-              </ul>
-            </article>
-          </li>
+          <ol class="timeline-list">
+            <li class="timeline-item" data-index="0">
+              <div class="timeline-marker" aria-hidden="true"></div>
+              <div class="timeline-content">
+                <article class="ms-card">
+                  <div class="ms-header">
+                    <div class="ms-icon" aria-label="PinPark logo">
+                      <svg class="ms-logo" viewBox="0 0 100 100" aria-hidden="true" focusable="false">
+                        <circle cx="50" cy="50" r="48" fill="none" stroke="currentColor" stroke-opacity="0.08" stroke-width="4" />
+                        <text x="50" y="58" text-anchor="middle" font-size="34" font-weight="700" fill="currentColor">PP</text>
+                      </svg>
+                    </div>
+                    <div class="ms-headings">
+                      <h3>Software &amp; AI Integration Intern · PinPark Inc.</h3>
+                      <p class="muted">05/2025 – 12/2025 · Salt Lake City, Utah</p>
+                    </div>
+                  </div>
+                  <div class="spot-body">
+                    <ul>
+                      <li>Built and deployed computer vision pipelines to detect parking occupancy from large-scale imagery using YOLOv8 and ViT models.</li>
+                      <li>Trained and fine-tuned object detection models on AWS, achieving 90%+ detection confidence through data augmentation and systematic error analysis.</li>
+                      <li>Optimized model performance under partial occlusion and low-visibility conditions for reliable real-time parking assessment.</li>
+                    </ul>
+                  </div>
+                </article>
+              </div>
+            </li>
 
-          <li class="ms">
-            <span class="ms-dot" aria-hidden="true"></span>
-            <article class="ms-card">
-              <h3>AI Engineer Intern · Ubongo</h3>
-              <p class="muted">Jun 2024 – Sep 2024</p>
-              <ul>
-                <li>Auto-translation tool (Python/Flask/JS) with review loop.</li>
-                <li>+15% accuracy, −20% processing time.</li>
-              </ul>
-            </article>
-          </li>
+            <li class="timeline-item" data-index="1">
+              <div class="timeline-marker" aria-hidden="true"></div>
+              <div class="timeline-content">
+                <article class="ms-card">
+                  <div class="ms-header">
+                    <div class="ms-icon" aria-label="Cognizant logo">
+                      <svg class="ms-logo" viewBox="0 0 100 100" aria-hidden="true" focusable="false">
+                        <circle cx="50" cy="50" r="48" fill="none" stroke="currentColor" stroke-opacity="0.06" stroke-width="4" />
+                        <text x="50" y="58" text-anchor="middle" font-size="30" font-weight="700" fill="currentColor">CG</text>
+                      </svg>
+                    </div>
+                    <div class="ms-headings">
+                      <h3>Generative AI Extern · Cognizant</h3>
+                      <p class="muted">05/2025 – 07/2025 · Teaneck, New Jersey</p>
+                    </div>
+                  </div>
+                  <div class="spot-body">
+                    <ul>
+                      <li>Built applied generative AI prototypes using Python and LLM APIs, focusing on prompt design and end-to-end workflow integration.</li>
+                      <li>Participated in mentor-led technical reviews, presenting system design decisions and trade-offs in a consulting-style environment.</li>
+                    </ul>
+                  </div>
+                </article>
+              </div>
+            </li>
 
-          <li class="ms">
-            <span class="ms-dot" aria-hidden="true"></span>
-            <article class="ms-card">
-              <h3>Project Grader · Colby College</h3>
-              <p class="muted">Feb 2025 – Present</p>
-              <ul><li>Correctness, efficiency, and clear feedback.</li></ul>
-            </article>
-          </li>
+            <li class="timeline-item" data-index="2">
+              <div class="timeline-marker" aria-hidden="true"></div>
+              <div class="timeline-content">
+                <article class="ms-card">
+                  <div class="ms-header">
+                    <div class="ms-icon" aria-label="Ubongo logo">
+                      <svg class="ms-logo" viewBox="0 0 100 100" aria-hidden="true" focusable="false">
+                        <circle cx="50" cy="50" r="48" fill="none" stroke="currentColor" stroke-opacity="0.06" stroke-width="4" />
+                        <text x="50" y="58" text-anchor="middle" font-size="30" font-weight="700" fill="currentColor">UB</text>
+                      </svg>
+                    </div>
+                    <div class="ms-headings">
+                      <h3>AI Engineer Intern · Ubongo</h3>
+                      <p class="muted">06/2024 – 09/2024 · Dar es Salaam, Tanzania (Remote)</p>
+                    </div>
+                  </div>
+                  <div class="spot-body">
+                    <ul>
+                      <li>Built an automated translation tool with Python, JavaScript, and the OpenAI GPT API, increasing translation accuracy by 15%.</li>
+                      <li>Reduced translation processing time by 20% through API optimization and batching strategies.</li>
+                      <li>Collaborated with native speakers to incorporate real-time user feedback and improve cultural accuracy and robustness.</li>
+                    </ul>
+                  </div>
+                </article>
+              </div>
+            </li>
 
-          <li class="ms">
-            <span class="ms-dot" aria-hidden="true"></span>
-            <article class="ms-card">
-              <h3>Community Advisor · Colby College</h3>
-              <p class="muted">Aug 2023 – Present</p>
-              <ul><li>Supported 200+ students; campus programming.</li></ul>
-            </article>
-          </li>
-        </ol>
+            <li class="timeline-item" data-index="3">
+              <div class="timeline-marker" aria-hidden="true"></div>
+              <div class="timeline-content">
+                <article class="ms-card">
+                  <div class="ms-header">
+                    <div class="ms-icon" aria-label="Colby Project Grader">
+                      <svg class="ms-logo" viewBox="0 0 100 100" aria-hidden="true" focusable="false">
+                        <circle cx="50" cy="50" r="48" fill="none" stroke="currentColor" stroke-opacity="0.06" stroke-width="4" />
+                        <text x="50" y="58" text-anchor="middle" font-size="30" font-weight="700" fill="currentColor">CG</text>
+                      </svg>
+                    </div>
+                    <div class="ms-headings">
+                      <h3>Project Grader · Colby College</h3>
+                      <p class="muted">02/2025 – 12/2025 · Waterville, ME</p>
+                    </div>
+                  </div>
+                  <div class="spot-body">
+                    <ul>
+                      <li>Graded programming projects for an introductory computer science course, evaluating Python code for correctness and clarity.</li>
+                    </ul>
+                  </div>
+                </article>
+              </div>
+            </li>
+
+            <li class="timeline-item" data-index="4">
+              <div class="timeline-marker" aria-hidden="true"></div>
+              <div class="timeline-content">
+                <article class="ms-card">
+                  <div class="ms-header">
+                    <div class="ms-icon" aria-label="Community Advisor badge">
+                      <svg class="ms-logo" viewBox="0 0 100 100" aria-hidden="true" focusable="false">
+                        <circle cx="50" cy="50" r="48" fill="none" stroke="currentColor" stroke-opacity="0.06" stroke-width="4" />
+                        <text x="50" y="58" text-anchor="middle" font-size="28" font-weight="700" fill="currentColor">CA</text>
+                      </svg>
+                    </div>
+                    <div class="ms-headings">
+                      <h3>Community Advisor · Colby College</h3>
+                      <p class="muted">08/2023 – 05/2025 · Waterville, ME</p>
+                    </div>
+                  </div>
+                  <div class="spot-body">
+                    <ul>
+                      <li>Managed a community of 200+ students, leading residential programming and initiatives to foster a safe and inclusive community.</li>
+                    </ul>
+                  </div>
+                </article>
+              </div>
+            </li>
+          </ol>
+        </div>
       </div>
     </section>
 
@@ -161,37 +243,21 @@
 
         <div class="proj-track" id="projTrack" aria-live="polite">
           <article class="proj-card">
-            <h3>Parking Occupancy CV Pipeline</h3>
-            <p class="muted">ViTDet · YOLOv8 · DETR · AWS</p>
+            <h3>Savory | Full-Stack Web Application</h3>
+            <p class="muted">Personal Project · GitHub</p>
             <ul>
-              <li>Dataset build (collection → COCO) + training/eval with augments.</li>
-              <li>Confidence &gt;90% on top-downs; robust &gt;80% under occlusion.</li>
+              <li>Designed and built a full-stack recipe and pantry management web application with step-by-step Cook Mode using React, TypeScript, Flask, and REST APIs.</li>
+              <li>Implemented frontend state management and backend data handling with clean architecture, shared TypeScript domain models, and scalable RESTful API design.</li>
             </ul>
           </article>
 
           <article class="proj-card">
-            <h3>Auto-Translate Service</h3>
-            <p class="muted">Python · Flask · OpenAI API · JS</p>
+            <h3>CLAS Scheduling Web Application</h3>
+            <p class="muted">Colby Liberal Arts Symposium · Team Project · GitHub</p>
             <ul>
-              <li>Prompted LLM translation with review loop + logging/metrics.</li>
-              <li>+15% accuracy, −20% time.</li>
-            </ul>
-          </article>
-
-          <article class="proj-card">
-            <h3>Hackathon Work</h3>
-            <p class="muted">Iteris · VoiceXD (Prize Winner)</p>
-            <ul>
-              <li>Iteris: connected-vehicle data → safety hotspots + insights.</li>
-              <li>VoiceXD: Colby assistants prototype with practical campus flows.</li>
-            </ul>
-          </article>
-
-          <article class="proj-card">
-            <h3>CodePath SWE</h3>
-            <p class="muted">Python · DS/Algos · Git/GitHub</p>
-            <ul>
-              <li>Control flow, core DS, Big-O; disciplined Git habits.</li>
+              <li>Built a scheduling and event management web application using Flask, Python, HTML/CSS, and JavaScript to support submission, approval, and scheduling workflows.</li>
+              <li>Implemented role-based access control, secure Google authentication, and admin dashboards for reviewing and approving events.</li>
+              <li>Developed conflict detection and scheduling logic and collaborated in an Agile team to deploy the application to Heroku.</li>
             </ul>
           </article>
         </div>

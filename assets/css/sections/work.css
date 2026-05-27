@@ -5,8 +5,42 @@
   max-width:1120px;
   width:min(96vw,1120px);
   margin:0 auto;
-  padding:clamp(40px,6vw,80px) 0;
+  padding:clamp(28px,4vw,56px) 0;
 }
+
+#work .work-title{
+  margin:0 auto 12px;
+  width:fit-content;
+  text-align:center;
+  font-size:clamp(2rem,4.2vw,2.9rem);
+  letter-spacing:.14em;
+  text-transform:none !important;
+  color:var(--forest-900);
+  opacity:0;
+  transform:translateY(8px) scale(0.998);
+  transition:opacity .5s cubic-bezier(.2,.9,.2,1), transform .5s cubic-bezier(.2,.9,.2,1);
+  position:relative;
+  font-weight:800;
+  text-shadow:0 4px 18px rgba(46,75,64,0.06);
+}
+
+#work .work-title::after{
+  content:"";
+  display:block;
+  width:38%;
+  height:2px;
+  margin:.45rem auto 0;
+  background:linear-gradient(90deg,transparent,rgba(46,75,64,.32),transparent);
+  border-radius:99px;
+}
+
+body.is-work-visible #work .work-title{
+  opacity:1;
+  transform:none;
+}
+
+/* make the title bolder when visible */
+#work .work-title.is-visible{color:var(--sage-700);letter-spacing:.12em}
 
 #work .band .rail{
   position:absolute; left:50%; top:0; bottom:0; transform:translateX(-50%);
@@ -15,6 +49,9 @@
   border-radius:calc(var(--rail-w)/2);
   box-shadow:0 2px 14px rgba(95,143,124,.12) inset;
 }
+
+/* hide the legacy rail when using the spotlight layout */
+#work .band .rail{display:none}
 
 #work .band .rail::after{
   content:"";
@@ -35,13 +72,30 @@
 
 #work .ms{
   display:grid;
-  grid-template-columns:minmax(340px,1fr) var(--rail-w) minmax(340px,1fr);
-  column-gap:clamp(40px,8vw,140px);
+  /* tighter columns so cards sit near the rail for the zig-zag look */
+  grid-template-columns:minmax(200px,1fr) var(--rail-w) minmax(200px,1fr);
+  column-gap:clamp(18px,5vw,48px);
   align-items:center;
   opacity:0;
-  transform:translateY(12px) scale(.985);
+  transform:translateY(8px) scale(.992);
   transition:opacity .45s ease,transform .45s ease;
 }
+
+#work .ms{position:relative}
+
+#work .ms .connector{
+  position:absolute;
+  left:50%;
+  top:20px;
+  width:180px;
+  height:60px;
+  transform:translateX(-50%);
+  z-index:1;
+  overflow:visible;
+}
+
+#work .ms:nth-child(even) .connector{transform:translateX(-50%) scaleX(-1)}
+
 #work .ms.in{opacity:1; transform:none}
 
 #work .ms .ms-dot, #work .ms .dot{
@@ -55,35 +109,54 @@
 }
 
 #work .ms .ms-card, #work .ms .card{
-  background:var(--card-bg);
-  backdrop-filter:blur(6px);
-  border:var(--card-brd);
-  border-radius:var(--card-r);
-  padding:var(--card-pad);
-  box-shadow:var(--card-shadow);
-  transition:transform .15s ease, box-shadow .2s ease;
-  max-width:560px;
+  background:rgba(255,255,255,0.88);
+  color:var(--sage-900);
+  backdrop-filter:blur(8px) saturate(115%);
+  -webkit-backdrop-filter:blur(8px) saturate(115%);
+  border-radius:14px;
+  padding:16px 18px;
+  border:1px solid rgba(46,75,64,0.08);
+  box-shadow:0 10px 28px rgba(12,28,20,0.06);
+  transition:transform .18s cubic-bezier(.2,.9,.25,1), box-shadow .25s ease;
+  max-width:700px;
+  position:relative;
+  z-index:2;
+  display:flex;
+  gap:16px;
+  align-items:flex-start;
 }
 
 #work .ms .ms-card:hover, #work .ms .card:hover{
-  transform:translateY(-2px) scale(1.01);
-  box-shadow:var(--card-shadow-h);
+  transform:translateY(-2px);
+  box-shadow:0 12px 26px rgba(12,28,20,0.07);
 }
 
 #work .ms .ms-card h3, #work .ms .card h3{
-  font-size:clamp(1.05rem,2vw,1.25rem);
-  margin-bottom:6px;
-  color:var(--sage-700);
+  font-size:clamp(1rem,1.9vw,1.16rem);
+  margin-bottom:4px;
+  color:var(--sage-900);
 }
 
-#work .ms .ms-card .muted, #work .ms .card .muted{font-size:.95rem; margin-bottom:6px}
+#work .ms .ms-header{display:flex;gap:12px;align-items:center;margin-bottom:4px;width:100%}
+#work .ms .ms-icon{width:46px;height:46px;border-radius:12px;background:rgba(46,75,64,0.025);display:inline-flex;align-items:center;justify-content:center;font-weight:800;color:#073522;box-shadow:none;flex:0 0 46px;overflow:hidden;border:1px solid rgba(46,75,64,0.05)}
+#work .ms .ms-icon img, #work .ms .ms-icon .ms-initial{width:100%;height:100%;object-fit:cover;display:block}
+#work .ms .ms-icon .ms-initial{display:flex;align-items:center;justify-content:center;font-size:.88rem;color:var(--sage-800);background:none}
+#work .ms .ms-headings h3{margin:0;font-size:1rem;line-height:1.25}
+#work .ms .ms-headings .muted{margin:0;font-size:.84rem}
+
+/* accent stripe near the rail */
+#work .ms .ms-card::after{content:"";position:absolute;top:16px;height:calc(100% - 32px);width:3px;border-radius:999px;background:rgba(46,75,64,.18)}
+#work .ms:nth-child(odd) .ms-card::after{right:-8px}
+#work .ms:nth-child(even) .ms-card::after{left:-8px}
+
+#work .ms .ms-card .muted, #work .ms .card .muted{font-size:.84rem; margin-bottom:4px; color:var(--muted)}
 #work .ms .ms-card ul, #work .ms .card ul{margin-left:18px; display:grid; gap:4px}
 
-#work .ms:nth-child(odd)  .ms-card, #work .ms:nth-child(odd)  .card{grid-column:1/2; justify-self:end;  margin-right:clamp(40px,8vw,140px)}
-#work .ms:nth-child(even) .ms-card, #work .ms:nth-child(even) .card{grid-column:3/4; justify-self:start; margin-left:clamp(40px,8vw,140px)}
+#work .ms:nth-child(odd)  .ms-card, #work .ms:nth-child(odd)  .card{grid-column:1/2; justify-self:end;  margin-right:clamp(4px,2.6vw,22px)}
+#work .ms:nth-child(even) .ms-card, #work .ms:nth-child(even) .card{grid-column:3/4; justify-self:start; margin-left:clamp(4px,2.6vw,22px)}
 
 @media (max-width:820px){
-  #work .band{padding-top:24px}
+  #work .band{padding-top:18px}
   #work .band .rail{left:12px; transform:none; width:2px; background:rgba(95,143,124,.35)}
   #work .milestones{gap:16px}
   #work .ms{grid-template-columns:24px 1fr; column-gap:12px}
@@ -91,5 +164,102 @@
     grid-column:1; justify-self:center; align-self:start; width:12px; height:12px;
     box-shadow:0 0 0 3px rgba(95,143,124,.18),0 6px 18px rgba(0,0,0,.14)
   }
-  #work .ms .ms-card,#work .ms .card{grid-column:2; justify-self:stretch; transform:none!important; margin:0; max-width:none}
+  #work .ms .ms-card,#work .ms .card{grid-column:2; justify-self:stretch; transform:none!important; margin:0; max-width:none; display:block}
+  #work .ms .ms-card .ms-header{align-items:center}
+  #work .ms .ms-icon{width:46px;height:46px;flex:0 0 46px}
+}
+
+/* Vertical scroll-draw timeline */
+.timeline-wrap{position:relative;max-width:1120px;width:min(96vw,1120px);margin:20px auto 0;padding:24px 0;display:flex;gap:28px;align-items:flex-start}
+.timeline-svg{flex:0 0 84px;width:84px;height:100%;display:block;position:relative}
+.timeline-svg svg{width:100%;height:100%;display:block}
+.timeline-path{fill:none;stroke:var(--sage-700);stroke-width:4;stroke-linecap:round;stroke-linejoin:round;stroke-opacity:0.98;transition:stroke-dashoffset .32s linear;will-change:stroke-dashoffset}
+.timeline-list{flex:1;list-style:none;margin:0;padding:6px 0 6px 0}
+.timeline-item{display:flex;gap:18px;align-items:flex-start;padding:40px 6px;min-height:120px;opacity:0;transform:translateY(8px);transition:opacity .44s ease,transform .44s ease}
+.timeline-item.in-view{opacity:1;transform:none}
+.timeline-marker{width:18px;height:18px;border-radius:50%;background:var(--sage-700);border:3px solid #fff;box-shadow:0 8px 20px rgba(0,0,0,.15);flex:0 0 18px;transform:scale(.6);transition:transform .28s cubic-bezier(.2,.9,.2,1),background .28s}
+.timeline-item.in-view .timeline-marker{transform:scale(1)}
+.timeline-content{flex:1}
+.timeline-content .ms-card{background:transparent;color:var(--sage-900);backdrop-filter:none;padding:8px 0;border-radius:8px;border:none;box-shadow:none;display:block}
+.timeline-content .ms-headings h3{font-size:clamp(1rem,1.8vw,1.15rem);margin-bottom:6px}
+.timeline-content .ms-headings .muted{font-size:.9rem;color:var(--muted)}
+.timeline-content ul{margin-left:18px;margin-top:6px}
+/* reduce company icon size inside the timeline to avoid oversized circles */
+/* hide company icons in timeline to simplify visual */
+.timeline-content .ms-icon{display:none}
+
+@media (max-width:820px){
+  .timeline-wrap{padding:16px 0}
+  .timeline-svg{flex:0 0 28px;width:28px}
+  .timeline-marker{width:14px;height:14px;border:3px solid rgba(255,255,255,0.9)}
+  .timeline-item{padding:18px 0}
+  .timeline-content .ms-card{padding:0}
+}
+
+@media (prefers-reduced-motion: reduce){
+  .timeline-item, .timeline-item.in-view{transition:none}
+}
+
+/* Minimal spotlight carousel styles */
+.spotlight{position:relative;max-width:1120px;margin:0 auto;padding:8px 0 24px;z-index:3}
+.spotlight::before{display:none}
+.spotlight-track{display:flex;gap:18px;overflow-x:auto;scroll-behavior:smooth;scroll-snap-type:x mandatory;-webkit-overflow-scrolling:touch;padding:0 4px}
+.spot-card{flex:0 0 92%;display:flex;gap:16px;align-items:flex-start;opacity:0;transform:translateY(6px);transition:opacity .42s cubic-bezier(.2,.9,.2,1),transform .42s cubic-bezier(.2,.9,.2,1);scroll-snap-align:center}
+.spot-card.is-active{opacity:1;transform:none}
+.spot-card .ms-header{min-width:0}
+.spot-card{padding:16px 18px;background:rgba(255,255,255,0.9);border-radius:14px;box-shadow:0 10px 22px rgba(12,28,20,0.05);border:1px solid rgba(46,75,64,0.08);color:var(--sage-900)}
+.spot-card .ms-headings{flex:1}
+.spot-card .spot-body{color:var(--muted);font-size:.92rem;line-height:1.48;margin-top:6px}
+.spot-card ul{margin-left:18px;display:grid;gap:6px}
+.spot-card li{line-height:1.5}
+.spot-card.is-active{animation:spot-in .44s cubic-bezier(.2,.9,.2,1) both}
+.spot-controls{display:flex;gap:8px;align-items:center;justify-content:center;margin-top:8px}
+.spot-prev,.spot-next{background:transparent;border:1px solid transparent;padding:6px 8px;border-radius:8px;cursor:pointer;font-size:18px;color:var(--sage-700)}
+.spot-prev:hover,.spot-next:hover{background:rgba(46,75,64,0.04)}
+.spot-prev:focus-visible,.spot-next:focus-visible{outline:3px solid rgba(127,207,176,0.22);outline-offset:3px;border-radius:10px}
+.spot-indicators{display:flex;gap:7px}
+.spot-indicators button{width:9px;height:9px;border-radius:99px;border:none;background:rgba(0,0,0,.08);cursor:pointer;padding:5px;box-sizing:content-box}
+.spot-indicators button.is-active{background:var(--sage-700);transform:scale(1)}
+.spot-indicators button:focus-visible{outline:2px solid rgba(127,207,176,0.22);outline-offset:3px}
+
+/* minimal card surface */
+.spot-card .ms-icon{width:44px;height:44px;border-radius:12px;background:rgba(46,75,64,0.03);display:inline-flex;align-items:center;justify-content:center;font-weight:700;color:var(--sage-800);flex:0 0 44px;border:1px solid rgba(46,75,64,0.06)}
+.spot-card .ms-icon .ms-initial{font-size:.82rem;color:var(--sage-800)}
+
+.ms-logo{width:100%;height:100%;display:block}
+
+@keyframes spot-in{
+  from{opacity:0;transform:translateY(6px) scale(.997)}
+  to{opacity:1;transform:none}
+}
+
+@media (prefers-reduced-motion: reduce){
+  .spot-card, .spot-card.is-active, .spot-controls button, .spot-indicators button{transition:none;animation:none}
+}
+
+@media (max-width:640px){
+  #work .work-title{font-size:clamp(1.25rem,5vw,1.65rem);letter-spacing:.14em;margin-bottom:12px}
+  .spotlight{padding:10px 0 18px}
+  .spot-card{flex-direction:row;gap:12px}
+  .spot-card .ms-icon{width:42px;height:42px;flex:0 0 42px}
+  .spot-controls{gap:8px}
+  .spot-prev,.spot-next{padding:9px 10px;font-size:19px}
+  .spot-indicators{gap:8px}
+  .spot-indicators button{width:10px;height:10px}
+}
+
+@media (min-width:980px){
+  /* wider cards on desktop */
+  .spot-card{flex:0 0 92%;padding:18px 20px}
+  .spot-card .ms-headings h3{font-size:1.1rem}
+  .spot-card .ms-headings .muted{font-size:.88rem}
+}
+
+/* dim the animated background when spotlight is visible */
+body.bg-dim .bgfx{opacity:0.12 !important;transition:opacity .28s ease}
+
+/* ensure tap targets are at least 44x44 on small screens */
+@media (max-width:480px){
+  .spot-prev,.spot-next{min-width:44px;min-height:44px;padding:10px}
+  .spot-indicators button{min-width:12px;min-height:12px}
 }

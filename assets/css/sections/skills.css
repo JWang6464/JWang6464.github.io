@@ -21,7 +21,7 @@ section#skills.stack .stack-header{
   align-items:end;
   justify-content:space-between;
   gap:clamp(16px,3vw,28px);
-  margin-bottom:clamp(16px,2.6vw,28px);
+  margin-bottom:clamp(10px,1.6vw,18px);
 }
 
 section#skills.stack .stack-eyebrow{
@@ -34,7 +34,7 @@ section#skills.stack .stack-eyebrow{
 }
 
 section#skills.stack .stack-title{
-  font-size:clamp(1.8rem,4vw,3rem);
+  font-size:clamp(2rem,4.4vw,3.25rem);
   font-weight:800;
   color:#f4fbf8;
   line-height:1.05;

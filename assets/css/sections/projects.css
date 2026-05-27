@@ -7,6 +7,38 @@
   padding-inline:clamp(20px,6vw,80px);
 }
 
+/* fancy project title animation */
+.projects .proj-title{
+  position:relative;
+  letter-spacing:0.04em;
+  transform:translateX(-82px) scale(.994); /* slide from further left */
+  opacity:0;
+  transition:opacity 1.1s cubic-bezier(.16,.84,.24,1), transform 1.2s cubic-bezier(.16,.84,.24,1), letter-spacing .6s ease;
+  transition-delay:0.18s; /* start slightly later */
+  font-size:clamp(1.95rem,3.8vw,2.8rem);
+  text-align:left;
+}
+.projects .proj-title::after{
+  content:"";
+  position:absolute;
+  left:50%;
+  transform:translateX(-50%) scaleX(0);
+  bottom:-10px;
+  height:4px;
+  width:58%;
+  border-radius:999px;
+  background:linear-gradient(90deg,var(--sage-700),var(--forest-900));
+  transform-origin:center left;
+  transition:transform .5s cubic-bezier(.2,.9,.2,1), opacity .4s ease;
+  opacity:.95;
+}
+.projects .proj-title.is-visible{opacity:1; transform:none; letter-spacing:0.02em}
+.projects .proj-title::after{transition:transform .8s cubic-bezier(.16,.84,.24,1), opacity .6s ease}
+.projects .proj-title.is-visible::after{transform:translateX(-50%) scaleX(1)}
+
+.projects .proj-sub{display:block; text-align:center; margin-top:6px; color:var(--muted); font-size:0.95rem; opacity:0; transform:translateY(6px); transition:opacity .45s ease, transform .45s ease}
+.projects .proj-title.is-visible + .proj-sub{opacity:1; transform:none}
+
 .proj-wrap{position:relative; max-width:1200px; width:min(96vw,1200px); margin:0 auto}
 
 .proj-track{

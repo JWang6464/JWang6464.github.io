@@ -21,6 +21,14 @@
       // set explicit px units so computed styles are consistent
       path.style.strokeDasharray = pathLen + 'px';
       path.style.strokeDashoffset = pathLen + 'px';
+    // ensure the SVG element spans the full timeline height so the path lines up with items
+    try{
+      const svgEl = root.querySelector('.timeline-svg');
+      if(svgEl){
+        const h = Math.max( Math.round(root.getBoundingClientRect().height), 220 );
+        svgEl.style.height = h + 'px';
+      }
+    }catch(e){/* noop */}
     if(prefersReduced) path.style.transition = 'none';
     // initialize stroke position based on initial visibility
     try{
@@ -33,12 +41,18 @@
 
   // compute stop ratios for each timeline item so the line can step to markers
   let stops = [];
-  function computeStops(){
+  function getTimelineRange(){
     const rect = root.getBoundingClientRect();
     const rootTopPage = window.scrollY + rect.top;
-    // expand the mapping window so the line can complete past the visible area if needed
-    const startOffset = rootTopPage - (window.innerHeight * 0.25);
-    const endOffset = rootTopPage + rect.height + (window.innerHeight * 0.25);
+    const firstItem = items[0];
+    const lastItem = items[items.length - 1];
+    const startOffset = rootTopPage + (firstItem ? firstItem.offsetTop - (window.innerHeight * 0.35) : 0);
+    const endOffset = rootTopPage + (lastItem ? lastItem.offsetTop + lastItem.offsetHeight + (window.innerHeight * 0.35) : rect.height);
+    return { rootTopPage, startOffset, endOffset };
+  }
+
+  function computeStops(){
+    const { rootTopPage, startOffset, endOffset } = getTimelineRange();
     const span = Math.max(1, endOffset - startOffset);
     stops = items.map(it => {
       const itemCenterPageY = rootTopPage + it.offsetTop + (it.offsetHeight / 2);
@@ -68,6 +82,21 @@
     }catch(e){/* noop */}
   }
 
+  function syncItems(progress){
+    // reveal items slightly before the line reaches their marker
+    // use a larger lead for the final item so it appears earlier without losing hide-on-scroll
+    const baseRevealLead = 0.18;
+    const extraForLast = 0.22; // extra early reveal for the final item
+    const minThreshold = 0.02; // don't reveal immediately at page top
+    items.forEach((item, index) => {
+      const stop = stops[index] ?? 1;
+      const lead = baseRevealLead + (index === items.length - 1 ? extraForLast : 0);
+      const threshold = Math.max(minThreshold, stop - lead);
+      const shouldReveal = progress >= threshold;
+      item.classList.toggle('in-view', shouldReveal);
+    });
+  }
+
   // Use IntersectionObserver on the timeline container for reliable progress
   try{
     // build an array of thresholds 0..1 at 100 steps for smooth updates
@@ -93,13 +122,15 @@
   // scroll-driven progress (rAF loop)
   let rafId = null;
   function calcScrollProgress(){
-    const rect = root.getBoundingClientRect();
-    const rootTopPage = window.scrollY + rect.top;
-    // use an expanded mapping window so the line can reach the end even when page is short
-    const startOffset = rootTopPage - (window.innerHeight * 0.15);
-    const endOffset = rootTopPage + rect.height - (window.innerHeight * 0.25);
+    const { startOffset, endOffset } = getTimelineRange();
     const viewportCenter = window.scrollY + (window.innerHeight / 2);
-    const p = (viewportCenter - startOffset) / Math.max(1, endOffset - startOffset);
+    const span = Math.max(1, endOffset - startOffset);
+    // If the user is at (or very near) the bottom of the page, treat as fully progressed
+    if (window.scrollY + window.innerHeight >= (document.documentElement.scrollHeight - 8)) return 1;
+    // If the viewport center is within a small buffer of the end, snap to complete
+    const buffer = Math.min(window.innerHeight * 0.15, span * 0.06);
+    if (viewportCenter >= endOffset - buffer) return 1;
+    const p = (viewportCenter - startOffset) / span;
     return Math.max(0, Math.min(1, p));
   }
 
@@ -108,7 +139,9 @@
   function loop(){
     const now = performance.now();
     if(now - lastUpdate > 33){
-      updateFromRatio(calcScrollProgress());
+      const progress = calcScrollProgress();
+      updateFromRatio(progress);
+      syncItems(progress);
       lastUpdate = now;
     }
     rafId = requestAnimationFrame(loop);
@@ -126,19 +159,14 @@
 
   window.addEventListener('resize', () => {
     cancelAnimationFrame(rafId);
+    // refresh svg sizing and stops on resize
+    try{ const svgEl = root.querySelector('.timeline-svg'); if(svgEl) svgEl.style.height = Math.max( Math.round(root.getBoundingClientRect().height), 220 ) + 'px'; }catch(e){}
     computeStops();
     rafId = requestAnimationFrame(loop);
   });
 
-  // observe individual items to reveal markers/content
-    try{
-    const io = new IntersectionObserver(entries => {
-      entries.forEach(en => {
-        en.target.classList.toggle('in-view', en.isIntersecting);
-      });
-    }, { threshold: 0.25 });
-    items.forEach(item => io.observe(item));
-  }catch(e){/* noop */}
+  // individual-item IntersectionObserver removed — visibility is driven by `syncItems(progress)`
+  // (keeps reveal/hide behavior consistent with the SVG draw progress)
 
   // (setupPath already called during initialization)
 

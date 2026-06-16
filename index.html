@@ -241,31 +241,51 @@
       <div class="proj-wrap">
         <h2 class="proj-title">Projects</h2>
 
-        <div class="proj-track" id="projTrack" aria-live="polite">
-          <article class="proj-card">
-            <h3>Savory | Full-Stack Web Application</h3>
-            <p class="muted">Personal Project · GitHub</p>
-            <ul>
-              <li>Designed and built a full-stack recipe and pantry management web application with step-by-step Cook Mode using React, TypeScript, Flask, and REST APIs.</li>
-              <li>Implemented frontend state management and backend data handling with clean architecture, shared TypeScript domain models, and scalable RESTful API design.</li>
-            </ul>
-          </article>
+        <div class="proj-grid" id="projGrid">
+          <button class="proj-card proj-card--savory" type="button" data-project="savory" aria-label="Open Savory project details">
+            <img src="assets/images/savory.jpg" alt="Artwork representing Savory" loading="lazy" decoding="async" />
+            <div class="proj-card__overlay">
+              <p class="proj-card__eyebrow">Personal Project</p>
+              <h3>Savory</h3>
+              <p class="proj-card__tag">Full-Stack Web Application</p>
+            </div>
+          </button>
 
-          <article class="proj-card">
-            <h3>CLAS Scheduling Web Application</h3>
-            <p class="muted">Colby Liberal Arts Symposium · Team Project · GitHub</p>
-            <ul>
-              <li>Built a scheduling and event management web application using Flask, Python, HTML/CSS, and JavaScript to support submission, approval, and scheduling workflows.</li>
-              <li>Implemented role-based access control, secure Google authentication, and admin dashboards for reviewing and approving events.</li>
-              <li>Developed conflict detection and scheduling logic and collaborated in an Agile team to deploy the application to Heroku.</li>
-            </ul>
-          </article>
+          <button class="proj-card proj-card--clas" type="button" data-project="clas" aria-label="Open CLAS Scheduling Web Application project details">
+            <img src="assets/images/colby.jpg" alt="Artwork representing CLAS Scheduling" loading="lazy" decoding="async" />
+            <div class="proj-card__overlay">
+              <p class="proj-card__eyebrow">Team Project</p>
+              <h3>CLAS Scheduling</h3>
+              <p class="proj-card__tag">Web Application</p>
+            </div>
+          </button>
+
+          <button class="proj-card proj-card--gaslaw" type="button" data-project="gas-law" aria-label="Open Gas Law Simulation project details">
+            <video class="proj-card__video" src="assets/images/Ideal%20Gas%20Law%20Simulation%20(Jordan%20Wang).mov" muted playsinline loop preload="auto" aria-hidden="true"></video>
+            <div class="proj-card__overlay">
+              <p class="proj-card__eyebrow">Personal Project</p>
+              <h3>Gas Law Simulation</h3>
+              <p class="proj-card__tag">Chemistry Simulation</p>
+            </div>
+          </button>
         </div>
 
-        <div class="proj-nav" aria-hidden="false">
-          <button class="proj-btn prev" id="projPrev" aria-label="Previous">‹</button>
-          <button class="proj-btn next" id="projNext" aria-label="Next">›</button>
-        </div>
+        <dialog class="proj-modal" id="projectModal" aria-labelledby="projectModalTitle" aria-describedby="projectModalDescription">
+          <div class="proj-modal__shell">
+            <button class="proj-modal__close" type="button" aria-label="Close project details" data-close-modal>×</button>
+            <div class="proj-modal__media">
+              <img id="projectModalImage" src="" alt="" />
+            </div>
+            <div class="proj-modal__body">
+              <p class="proj-modal__eyebrow" id="projectModalEyebrow"></p>
+              <h3 id="projectModalTitle"></h3>
+              <p class="proj-modal__tag" id="projectModalTag"></p>
+              <p class="proj-modal__desc" id="projectModalDescription"></p>
+              <ul class="proj-modal__bullets" id="projectModalBullets"></ul>
+              <div class="proj-modal__actions" id="projectModalLinks"></div>
+            </div>
+          </div>
+        </dialog>
       </div>
     </section>
 
@@ -366,7 +386,7 @@
   <script src="assets/js/portfolio/hero-scroll.js" defer></script>
   <script src="assets/js/portfolio/work-timeline.js" defer></script>
   <script src="assets/js/portfolio/projects-title.js" defer></script>
-  <script src="assets/js/portfolio/projects-slider.js" defer></script>
+  <script src="assets/js/portfolio/projects-modal.js" defer></script>
 
 </body>
 </html>

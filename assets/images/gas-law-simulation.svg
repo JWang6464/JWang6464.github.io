@@ -1,0 +1,57 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 900" role="img" aria-labelledby="title desc">
+  <title id="title">Gas Law Simulation</title>
+  <desc id="desc">Abstract chemistry-themed illustration with particles, flask shapes, and soft gradient lighting.</desc>
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#203b35" />
+      <stop offset="52%" stop-color="#13302c" />
+      <stop offset="100%" stop-color="#081614" />
+    </linearGradient>
+    <radialGradient id="glow" cx="50%" cy="38%" r="60%">
+      <stop offset="0%" stop-color="#9ff0c9" stop-opacity="0.92" />
+      <stop offset="40%" stop-color="#58c8a5" stop-opacity="0.38" />
+      <stop offset="100%" stop-color="#58c8a5" stop-opacity="0" />
+    </radialGradient>
+    <linearGradient id="glass" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#d8fff2" stop-opacity="0.52" />
+      <stop offset="100%" stop-color="#8ee0c1" stop-opacity="0.12" />
+    </linearGradient>
+    <linearGradient id="accent" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#b4ffe2" />
+      <stop offset="100%" stop-color="#60d0ae" />
+    </linearGradient>
+  </defs>
+  <rect width="1200" height="900" fill="url(#bg)" />
+  <circle cx="600" cy="360" r="360" fill="url(#glow)" />
+
+  <g opacity="0.22" fill="none" stroke="#8ef0c6" stroke-width="3">
+    <path d="M95 680 C230 560, 305 560, 420 640" />
+    <path d="M800 250 C910 200, 1010 220, 1120 320" />
+    <path d="M120 210 C215 150, 340 140, 450 180" />
+  </g>
+
+  <g opacity="0.95">
+    <ellipse cx="455" cy="660" rx="135" ry="42" fill="#071312" opacity="0.62" />
+    <path d="M378 255 L532 255 L552 650 Q455 706 358 650 Z" fill="url(#glass)" stroke="#d6fff1" stroke-opacity="0.38" stroke-width="4" />
+    <path d="M422 170 H488 V255 H422 Z" fill="#d9fff3" fill-opacity="0.18" stroke="#d6fff1" stroke-opacity="0.38" stroke-width="4" />
+    <path d="M358 650 Q455 706 552 650" fill="none" stroke="#d6fff1" stroke-opacity="0.38" stroke-width="4" />
+    <path d="M392 560 C412 490, 500 485, 520 560 C532 602, 498 635, 456 635 C414 635, 380 602, 392 560 Z" fill="url(#accent)" fill-opacity="0.25" />
+  </g>
+
+  <g opacity="0.95" fill="#b8ffe4">
+    <circle cx="708" cy="318" r="20" />
+    <circle cx="768" cy="376" r="12" opacity="0.82" />
+    <circle cx="820" cy="300" r="16" opacity="0.9" />
+    <circle cx="880" cy="392" r="9" opacity="0.72" />
+    <circle cx="646" cy="410" r="14" opacity="0.86" />
+    <circle cx="736" cy="454" r="10" opacity="0.8" />
+    <circle cx="842" cy="470" r="18" opacity="0.9" />
+  </g>
+
+  <g opacity="0.9">
+    <rect x="682" y="572" width="320" height="14" rx="7" fill="#b4ffe2" fill-opacity="0.28" />
+    <rect x="702" y="612" width="280" height="10" rx="5" fill="#b4ffe2" fill-opacity="0.16" />
+    <text x="840" y="500" text-anchor="middle" font-family="Arial, Helvetica, sans-serif" font-size="58" font-weight="700" fill="#f2fff9">Gas Law</text>
+    <text x="840" y="553" text-anchor="middle" font-family="Arial, Helvetica, sans-serif" font-size="28" font-weight="600" fill="#d8fff2" fill-opacity="0.86">Simulation</text>
+  </g>
+</svg>

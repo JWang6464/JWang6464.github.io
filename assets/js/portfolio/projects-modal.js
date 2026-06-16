@@ -134,16 +134,18 @@
 
   const startGasLawVideo = async () => {
     if (!gasLawCard || !gasLawVideo || gasLawVideo.parentElement !== gasLawCard) return;
+    gasLawCard.classList.add('is-video-playing');
     try {
       await gasLawVideo.play();
     } catch {
-      // Ignore playback failures; the card still opens normally.
+      gasLawCard.classList.remove('is-video-playing');
     }
   };
 
   const stopGasLawVideo = () => {
     if (!gasLawCard || !gasLawVideo || gasLawVideo.parentElement !== gasLawCard) return;
     gasLawVideo.pause();
+    gasLawCard.classList.remove('is-video-playing');
   };
 
   if (gasLawCard && gasLawVideo) {
@@ -158,6 +160,7 @@
     });
     gasLawVideo.addEventListener('ended', () => {
       gasLawVideo.pause();
+      gasLawCard.classList.remove('is-video-playing');
     });
   }
 
